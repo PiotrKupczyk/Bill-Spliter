@@ -1,0 +1,6 @@
+framework module Pods_Bill_Spliter {
+  umbrella header "Pods-Bill Spliter-umbrella.h"
+
+  export *
+  module * { export * }
+}

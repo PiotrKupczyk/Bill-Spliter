@@ -1,0 +1,30 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - FanMenu (0.7.2):
+    - Macaw
+  - Macaw (0.9.3):
+    - SWXMLHash
+  - SWXMLHash (4.7.4)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift
+  - FanMenu
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ChameleonFramework
+    - FanMenu
+    - Macaw
+    - SWXMLHash
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FanMenu: b8bb2733ebb2457bf675b6290dfd5aa47a608c05
+  Macaw: e370d81f465ea1daa8a72d2afa218000bcd24f0a
+  SWXMLHash: b35739a5cfd915c3b482977aa720d6708e260a90
+
+PODFILE CHECKSUM: a6fb4ad23ef9a6d24625c2d98a63150cf6d1cd6e
+
+COCOAPODS: 1.5.3

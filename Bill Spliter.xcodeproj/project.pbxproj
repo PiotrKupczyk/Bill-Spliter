@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02BE39DC4AC7534010A52AAD /* Pods_Bill_SpliterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */; };
+		0B57C58D3F7022212E961DC5 /* Pods_Bill_Spliter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */; };
 		833678EE2210528E00331E5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833678ED2210528E00331E5D /* AppDelegate.swift */; };
 		833678F02210528E00331E5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833678EF2210528E00331E5D /* ViewController.swift */; };
 		833678F32210528E00331E5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833678F12210528E00331E5D /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0AAC95A8FC3D605DCCDDE9 /* Pods-Bill Spliter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.release.xcconfig"; sourceTree = "<group>"; };
+		7803FF0D6E99CC4725433132 /* Pods-Bill SpliterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.release.xcconfig"; sourceTree = "<group>"; };
 		833678EA2210528E00331E5D /* Bill Spliter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bill Spliter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833678ED2210528E00331E5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		833678EF2210528E00331E5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +40,10 @@
 		833678FE2210529400331E5D /* Bill SpliterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bill SpliterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833679022210529400331E5D /* Bill_SpliterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill_SpliterTests.swift; sourceTree = "<group>"; };
 		833679042210529400331E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_SpliterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
+		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B57C58D3F7022212E961DC5 /* Pods_Bill_Spliter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02BE39DC4AC7534010A52AAD /* Pods_Bill_SpliterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				833678EC2210528E00331E5D /* Bill Spliter */,
 				833679012210529400331E5D /* Bill SpliterTests */,
 				833678EB2210528E00331E5D /* Products */,
+				D01BA4A8C2BEF37CDD5F09CB /* Pods */,
+				ECAAE5B3D40709D4471AB360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +89,14 @@
 		833678EC2210528E00331E5D /* Bill Spliter */ = {
 			isa = PBXGroup;
 			children = (
-				833678ED2210528E00331E5D /* AppDelegate.swift */,
+				833679112210530300331E5D /* project-files */,
+				83367910221052F000331E5D /* controllers */,
+				8336790F221052DC00331E5D /* view-models */,
+				8336790E221052D000331E5D /* views */,
+				8336790D221052BB00331E5D /* models */,
 				833678EF2210528E00331E5D /* ViewController.swift */,
 				833678F12210528E00331E5D /* Main.storyboard */,
-				833678F42210529300331E5D /* Assets.xcassets */,
 				833678F62210529300331E5D /* LaunchScreen.storyboard */,
-				833678F92210529300331E5D /* Info.plist */,
 			);
 			path = "Bill Spliter";
 			sourceTree = "<group>";
@@ -96,6 +110,64 @@
 			path = "Bill SpliterTests";
 			sourceTree = "<group>";
 		};
+		8336790D221052BB00331E5D /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		8336790E221052D000331E5D /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		8336790F221052DC00331E5D /* view-models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "view-models";
+			sourceTree = "<group>";
+		};
+		83367910221052F000331E5D /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		833679112210530300331E5D /* project-files */ = {
+			isa = PBXGroup;
+			children = (
+				833678ED2210528E00331E5D /* AppDelegate.swift */,
+				833678F42210529300331E5D /* Assets.xcassets */,
+				833678F92210529300331E5D /* Info.plist */,
+			);
+			path = "project-files";
+			sourceTree = "<group>";
+		};
+		D01BA4A8C2BEF37CDD5F09CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */,
+				4B0AAC95A8FC3D605DCCDDE9 /* Pods-Bill Spliter.release.xcconfig */,
+				C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */,
+				7803FF0D6E99CC4725433132 /* Pods-Bill SpliterTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ECAAE5B3D40709D4471AB360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */,
+				89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 833679072210529400331E5D /* Build configuration list for PBXNativeTarget "Bill Spliter" */;
 			buildPhases = (
+				48A2702EB091660DFAFB2EEF /* [CP] Check Pods Manifest.lock */,
 				833678E62210528D00331E5D /* Sources */,
 				833678E72210528D00331E5D /* Frameworks */,
 				833678E82210528D00331E5D /* Resources */,
+				011D2418E3754EF0809407B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8336790A2210529400331E5D /* Build configuration list for PBXNativeTarget "Bill SpliterTests" */;
 			buildPhases = (
+				74AB41CF91639BB19CD7CFA7 /* [CP] Check Pods Manifest.lock */,
 				833678FA2210529400331E5D /* Sources */,
 				833678FB2210529400331E5D /* Frameworks */,
 				833678FC2210529400331E5D /* Resources */,
@@ -191,6 +266,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		011D2418E3754EF0809407B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FanMenu/FanMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FanMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Macaw.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48A2702EB091660DFAFB2EEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bill Spliter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74AB41CF91639BB19CD7CFA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bill SpliterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		833678E62210528D00331E5D /* Sources */ = {
@@ -358,11 +496,13 @@
 		};
 		833679082210529400331E5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WM3KRQ8CEV;
-				INFOPLIST_FILE = "Bill Spliter/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Bill Spliter/project-files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,17 +510,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.piotr.kupczyk.Bill-Spliter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		833679092210529400331E5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B0AAC95A8FC3D605DCCDDE9 /* Pods-Bill Spliter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WM3KRQ8CEV;
-				INFOPLIST_FILE = "Bill Spliter/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Bill Spliter/project-files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,12 +530,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.piotr.kupczyk.Bill-Spliter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		8336790B2210529400331E5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +558,7 @@
 		};
 		8336790C2210529400331E5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7803FF0D6E99CC4725433132 /* Pods-Bill SpliterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
