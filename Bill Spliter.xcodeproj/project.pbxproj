@@ -9,12 +9,29 @@
 /* Begin PBXBuildFile section */
 		02BE39DC4AC7534010A52AAD /* Pods_Bill_SpliterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */; };
 		0B57C58D3F7022212E961DC5 /* Pods_Bill_Spliter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */; };
+		8325179C221059DB00BDB198 /* InitialsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179B221059DB00BDB198 /* InitialsImageView.swift */; };
+		8325179E2210638600BDB198 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179D2210638600BDB198 /* MainTabBarController.swift */; };
+		832517A02210660200BDB198 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179F2210660200BDB198 /* GroupsTableViewController.swift */; };
+		832517A22210665400BDB198 /* FriendsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A12210665400BDB198 /* FriendsCollectionViewController.swift */; };
+		832517A422106E5000BDB198 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A322106E5000BDB198 /* GroupsTableViewCell.swift */; };
+		832517A82210716C00BDB198 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A72210716C00BDB198 /* UIFont.swift */; };
+		832517AA221084A100BDB198 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A9221084A100BDB198 /* GroupViewModel.swift */; };
+		832517AC2210852700BDB198 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517AB2210852700BDB198 /* Group.swift */; };
 		833678EE2210528E00331E5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833678ED2210528E00331E5D /* AppDelegate.swift */; };
-		833678F02210528E00331E5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833678EF2210528E00331E5D /* ViewController.swift */; };
-		833678F32210528E00331E5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833678F12210528E00331E5D /* Main.storyboard */; };
 		833678F52210529300331E5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833678F42210529300331E5D /* Assets.xcassets */; };
 		833678F82210529300331E5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833678F62210529300331E5D /* LaunchScreen.storyboard */; };
 		833679032210529400331E5D /* Bill_SpliterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833679022210529400331E5D /* Bill_SpliterTests.swift */; };
+		83AE1F212211D7BD003A4D60 /* FriendsSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */; };
+		83AE1F2322131A36003A4D60 /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */; };
+		83AE1F2522132566003A4D60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2422132566003A4D60 /* User.swift */; };
+		83AE1F27221334B3003A4D60 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F26221334B3003A4D60 /* FriendViewModel.swift */; };
+		83AE1F292214939D003A4D60 /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F282214939D003A4D60 /* BillsViewController.swift */; };
+		83AE1F2B2215C25D003A4D60 /* BillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */; };
+		83AE1F2D2215C338003A4D60 /* Bill .swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2C2215C338003A4D60 /* Bill .swift */; };
+		83AE1F2F2215C755003A4D60 /* BillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2E2215C755003A4D60 /* BillViewModel.swift */; };
+		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
+		B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */; };
+		B6E0EF262CE5873279F2B81B /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,19 +47,36 @@
 /* Begin PBXFileReference section */
 		4B0AAC95A8FC3D605DCCDDE9 /* Pods-Bill Spliter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.release.xcconfig"; sourceTree = "<group>"; };
 		7803FF0D6E99CC4725433132 /* Pods-Bill SpliterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.release.xcconfig"; sourceTree = "<group>"; };
+		8325179B221059DB00BDB198 /* InitialsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsImageView.swift; sourceTree = "<group>"; };
+		8325179D2210638600BDB198 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8325179F2210660200BDB198 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		832517A12210665400BDB198 /* FriendsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewController.swift; sourceTree = "<group>"; };
+		832517A322106E5000BDB198 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		832517A72210716C00BDB198 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		832517A9221084A100BDB198 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		832517AB2210852700BDB198 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		833678EA2210528E00331E5D /* Bill Spliter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bill Spliter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833678ED2210528E00331E5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		833678EF2210528E00331E5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		833678F22210528E00331E5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		833678F42210529300331E5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		833678F72210529300331E5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		833678F92210529300331E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		833678FE2210529400331E5D /* Bill SpliterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bill SpliterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833679022210529400331E5D /* Bill_SpliterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill_SpliterTests.swift; sourceTree = "<group>"; };
 		833679042210529400331E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchBarView.swift; sourceTree = "<group>"; };
+		83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		83AE1F2422132566003A4D60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		83AE1F26221334B3003A4D60 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
+		83AE1F282214939D003A4D60 /* BillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsViewController.swift; sourceTree = "<group>"; };
+		83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsCollectionViewCell.swift; sourceTree = "<group>"; };
+		83AE1F2C2215C338003A4D60 /* Bill .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bill .swift"; sourceTree = "<group>"; };
+		83AE1F2E2215C755003A4D60 /* BillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewModel.swift; sourceTree = "<group>"; };
+		83DC413C2211CA2600B6BDF1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_SpliterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832517A52210715000BDB198 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				832517A62210715C00BDB198 /* extensions */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		832517A62210715C00BDB198 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				832517A72210716C00BDB198 /* UIFont.swift */,
+				83DC413C2211CA2600B6BDF1 /* UIColor.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		833678E12210528D00331E5D = {
 			isa = PBXGroup;
 			children = (
@@ -89,13 +140,12 @@
 		833678EC2210528E00331E5D /* Bill Spliter */ = {
 			isa = PBXGroup;
 			children = (
+				832517A52210715000BDB198 /* utilities */,
 				833679112210530300331E5D /* project-files */,
 				83367910221052F000331E5D /* controllers */,
 				8336790F221052DC00331E5D /* view-models */,
 				8336790E221052D000331E5D /* views */,
 				8336790D221052BB00331E5D /* models */,
-				833678EF2210528E00331E5D /* ViewController.swift */,
-				833678F12210528E00331E5D /* Main.storyboard */,
 				833678F62210529300331E5D /* LaunchScreen.storyboard */,
 			);
 			path = "Bill Spliter";
@@ -113,6 +163,9 @@
 		8336790D221052BB00331E5D /* models */ = {
 			isa = PBXGroup;
 			children = (
+				832517AB2210852700BDB198 /* Group.swift */,
+				83AE1F2422132566003A4D60 /* User.swift */,
+				83AE1F2C2215C338003A4D60 /* Bill .swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -120,6 +173,12 @@
 		8336790E221052D000331E5D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8325179B221059DB00BDB198 /* InitialsImageView.swift */,
+				832517A322106E5000BDB198 /* GroupsTableViewCell.swift */,
+				83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */,
+				83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */,
+				83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */,
+				B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -127,6 +186,9 @@
 		8336790F221052DC00331E5D /* view-models */ = {
 			isa = PBXGroup;
 			children = (
+				832517A9221084A100BDB198 /* GroupViewModel.swift */,
+				83AE1F26221334B3003A4D60 /* FriendViewModel.swift */,
+				83AE1F2E2215C755003A4D60 /* BillViewModel.swift */,
 			);
 			path = "view-models";
 			sourceTree = "<group>";
@@ -134,6 +196,11 @@
 		83367910221052F000331E5D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8325179D2210638600BDB198 /* MainTabBarController.swift */,
+				8325179F2210660200BDB198 /* GroupsTableViewController.swift */,
+				832517A12210665400BDB198 /* FriendsCollectionViewController.swift */,
+				83AE1F282214939D003A4D60 /* BillsViewController.swift */,
+				B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -254,7 +321,6 @@
 			files = (
 				833678F82210529300331E5D /* LaunchScreen.storyboard in Resources */,
 				833678F52210529300331E5D /* Assets.xcassets in Resources */,
-				833678F32210528E00331E5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,16 +342,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/FanMenu/FanMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework",
-				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FanMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Macaw.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -335,8 +405,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833678F02210528E00331E5D /* ViewController.swift in Sources */,
+				83AE1F2D2215C338003A4D60 /* Bill .swift in Sources */,
+				832517AC2210852700BDB198 /* Group.swift in Sources */,
+				832517AA221084A100BDB198 /* GroupViewModel.swift in Sources */,
 				833678EE2210528E00331E5D /* AppDelegate.swift in Sources */,
+				832517A22210665400BDB198 /* FriendsCollectionViewController.swift in Sources */,
+				83AE1F27221334B3003A4D60 /* FriendViewModel.swift in Sources */,
+				83AE1F2B2215C25D003A4D60 /* BillsCollectionViewCell.swift in Sources */,
+				83AE1F2322131A36003A4D60 /* FriendsCollectionViewCell.swift in Sources */,
+				832517A82210716C00BDB198 /* UIFont.swift in Sources */,
+				832517A422106E5000BDB198 /* GroupsTableViewCell.swift in Sources */,
+				83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */,
+				83AE1F2F2215C755003A4D60 /* BillViewModel.swift in Sources */,
+				8325179C221059DB00BDB198 /* InitialsImageView.swift in Sources */,
+				832517A02210660200BDB198 /* GroupsTableViewController.swift in Sources */,
+				83AE1F212211D7BD003A4D60 /* FriendsSearchBarView.swift in Sources */,
+				83AE1F292214939D003A4D60 /* BillsViewController.swift in Sources */,
+				83AE1F2522132566003A4D60 /* User.swift in Sources */,
+				8325179E2210638600BDB198 /* MainTabBarController.swift in Sources */,
+				B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */,
+				B6E0EF262CE5873279F2B81B /* AddGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,14 +447,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		833678F12210528E00331E5D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				833678F22210528E00331E5D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		833678F62210529300331E5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

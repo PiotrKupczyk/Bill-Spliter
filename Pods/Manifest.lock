@@ -2,29 +2,49 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - FanMenu (0.7.2):
-    - Macaw
-  - Macaw (0.9.3):
-    - SWXMLHash
-  - SWXMLHash (4.7.4)
+  - Kingfisher (4.10.0)
+  - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxGesture (2.0.1):
+    - RxCocoa (~> 4.3.1)
+    - RxSwift (~> 4.3.1)
+  - RxSwift (4.3.1)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
-  - ChameleonFramework/Swift
-  - FanMenu
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
+  - Kingfisher (~> 4.0)
+  - RxCocoa (~> 4.0)
+  - RxGesture
+  - RxSwift (~> 4.0)
+  - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - ChameleonFramework
-    - FanMenu
-    - Macaw
-    - SWXMLHash
+    - Kingfisher
+    - RxCocoa
+    - RxGesture
+    - RxSwift
+    - SnapKit
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :branch: wip/swift4
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: db432ca1b1a3d8f83ee1f881208c0c960a325e73
+    :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  FanMenu: b8bb2733ebb2457bf675b6290dfd5aa47a608c05
-  Macaw: e370d81f465ea1daa8a72d2afa218000bcd24f0a
-  SWXMLHash: b35739a5cfd915c3b482977aa720d6708e260a90
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxGesture: 26ede4ed13ffc6336d29dbd9a8dff229bdb72de7
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: a6fb4ad23ef9a6d24625c2d98a63150cf6d1cd6e
+PODFILE CHECKSUM: c09fdd83a39e5e1c88c749c4ebde44f5c20cbedf
 
 COCOAPODS: 1.5.3
