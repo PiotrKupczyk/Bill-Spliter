@@ -12,7 +12,8 @@ import RxSwift
 
 class FriendViewModel {
     let dataSource = PublishSubject<[User]>()
-    
+    let selectedUsers = PublishSubject<[User]>()
+    private var selectedUsersArray = [User]()
     init() {}
     
     public func fetchData() {
@@ -31,5 +32,10 @@ class FriendViewModel {
         friends.append(friend)
         friends.append(friend)
         dataSource.onNext(friends)
+    }
+
+    func selectUser(user: User) {
+        selectedUsersArray.append(user)
+        selectedUsers.onNext(selectedUsersArray)
     }
 }

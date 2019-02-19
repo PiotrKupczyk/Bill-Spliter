@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SnapKit
 
 class GroupsTableViewController: UIViewController, UITableViewDelegate {
     private let reuseIdentifier = "GroupsCell"
@@ -25,25 +26,41 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         model.fetchData()
     }
     
-    let plusButton = UIButton(frame: .zero)
+    let plusButton = UIButton()
     let tableView = UITableView()
     
     private func setupView() {
+        plusButton.setImage(UIImage(named: "plus-icon"), for: .normal)
         view.backgroundColor = .white
         self.tableView.separatorColor = .clear
         tableView.backgroundColor = .white
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        plusButton.rx
+                .tap
+                .subscribe(onNext: {
+                    let vc = AddGroupViewController()
+                    vc.title = "Add group"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                .disposed(by: disposeBag)
     }
     
     private func setupLayouts() {
+        view.addSubview(plusButton)
+        plusButton.snp.makeConstraints { maker in
+            maker.centerX.equalToSuperview()
+            maker.height.equalTo(64)
+            maker.width.equalTo(64)
+            maker.bottom.equalTo(view.snp.bottomMargin).inset(8)
+        }
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.top.equalTo(view.snp.topMargin)
             maker.trailing.equalTo(view.snp.trailing)
             maker.leading.equalTo(view.snp.leading)
-            maker.bottom.equalTo(view.snp.bottomMargin)
+            maker.bottom.equalTo(plusButton.snp.top).inset(-8)
+//            maker.bottom.equalTo(view.snp.bottomMargin)
         }
-        
     }
     
     private func bindTableView() {

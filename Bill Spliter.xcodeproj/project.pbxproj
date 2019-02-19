@@ -30,7 +30,10 @@
 		83AE1F2D2215C338003A4D60 /* Bill .swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2C2215C338003A4D60 /* Bill .swift */; };
 		83AE1F2F2215C755003A4D60 /* BillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2E2215C755003A4D60 /* BillViewModel.swift */; };
 		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
+		B6E0E0900473EA51C885C570 /* KeyboardFriendlyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */; };
+		B6E0E5FF9B22CA492ADB7B9B /* MembersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */; };
 		B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */; };
+		B6E0EA6AFA7CDA4BA514B162 /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E99BAC78070084963A32 /* AddGroupViewModel.swift */; };
 		B6E0EF262CE5873279F2B81B /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,9 @@
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6E0E99BAC78070084963A32 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
+		B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFriendlyVC.swift; sourceTree = "<group>"; };
 		B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +185,7 @@
 				83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */,
 				83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */,
 				B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */,
+				B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				832517A9221084A100BDB198 /* GroupViewModel.swift */,
 				83AE1F26221334B3003A4D60 /* FriendViewModel.swift */,
 				83AE1F2E2215C755003A4D60 /* BillViewModel.swift */,
+				B6E0E99BAC78070084963A32 /* AddGroupViewModel.swift */,
 			);
 			path = "view-models";
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 				832517A12210665400BDB198 /* FriendsCollectionViewController.swift */,
 				83AE1F282214939D003A4D60 /* BillsViewController.swift */,
 				B6E0E1E8FD1D2A618087EF95 /* AddGroupViewController.swift */,
+				B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -425,6 +434,9 @@
 				8325179E2210638600BDB198 /* MainTabBarController.swift in Sources */,
 				B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */,
 				B6E0EF262CE5873279F2B81B /* AddGroupViewController.swift in Sources */,
+				B6E0E0900473EA51C885C570 /* KeyboardFriendlyVC.swift in Sources */,
+				B6E0E5FF9B22CA492ADB7B9B /* MembersCollectionViewCell.swift in Sources */,
+				B6E0EA6AFA7CDA4BA514B162 /* AddGroupViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

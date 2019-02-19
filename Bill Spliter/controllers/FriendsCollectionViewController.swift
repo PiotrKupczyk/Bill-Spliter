@@ -22,27 +22,12 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
         setupLayouts()
         bindCollectionView()
         viewModel.fetchData()
-
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
     //MARK: - Custom views declaration
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    let subTitleLable: UILabel = {
+    let subTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.appFont(ofSize: 13, weight: .regular)
         label.text = "Find your friends using name or email."
@@ -69,19 +54,17 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }()
     
     //MARK: - Views setup
-    
+
     private func setupViews() {
         view.backgroundColor = .white
         collectionView.backgroundColor = .white
         collectionView.register(FriendsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     private func setupLayouts() {
-        view.addSubview(subTitleLable)
-        subTitleLable.snp.makeConstraints { (maker) in
+        view.addSubview(subTitleLabel)
+        subTitleLabel.snp.makeConstraints { (maker) in
             maker.top.equalTo(view.snp.topMargin).inset(4)
             maker.leading.equalTo(view.snp.leading)
             maker.trailing.equalTo(view.snp.trailing)
@@ -89,7 +72,7 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
         }
         view.addSubview(searchBarView)
         searchBarView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(subTitleLable.snp.bottom).inset(-8)
+            maker.top.equalTo(subTitleLabel.snp.bottom).inset(-8)
             maker.leading.equalTo(view.snp.leading).inset(16)
             maker.trailing.equalTo(view.snp.trailing).inset(16)
             maker.height.equalTo(40)
@@ -119,6 +102,7 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
                     cell.unSelect()
                 } else {
                     cell.select()
+                    self.viewModel.selectUser(user: cell.friendModel)
                 }
                 cell.wasSelected = !cell.wasSelected
                 //MARK: - add nice blue cell border
@@ -127,11 +111,10 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier)) {
             (_, friend: User, cell: FriendsCollectionViewCell) in
-            cell.friendViewModel = friend
+            cell.friendModel = friend
             }.disposed(by: disposeBag)
     }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
@@ -139,5 +122,4 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 140)
     }
-
 }

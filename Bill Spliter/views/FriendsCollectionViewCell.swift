@@ -10,10 +10,10 @@ import UIKit
 import Kingfisher
 class FriendsCollectionViewCell: UICollectionViewCell {
     
-    var friendViewModel: User! {
+    var friendModel: User! {
         didSet {
-            profileImageView.kf.setImage(with: friendViewModel.imageURL)
-            nameLabel.text = friendViewModel.name
+            profileImageView.kf.setImage(with: friendModel.imageURL)
+            nameLabel.text = friendModel.name
             setupLayouts()
         }
     }
