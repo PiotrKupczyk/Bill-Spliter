@@ -9,6 +9,7 @@ import RxSwift
 class AddGroupViewModel {
     private let disposeBag = DisposeBag()
     let groupMembers = PublishSubject<[User]>()
+    private var members = [User]()
 //    let groupTitle = PublishSubject<String>()
 //    let groupCurrency = PublishSubject<String>()
 
@@ -19,7 +20,20 @@ class AddGroupViewModel {
         return newGroup
     }
 
-    public func addUsers(users: [User]) {
-        groupMembers.onNext(users)
+    public func addUser(user: User) {
+        members.append(user)
+        groupMembers.onNext(members)
     }
+
+    public func removeUser(user: User) {
+        print("Removing...")
+        members = members.filter { $0 === user }
+//                .map { print($0) }
+        groupMembers.onNext(members)
+//        groupMembers.onNext([User]())
+//        members = members.filter { $0 === user}
+//        groupMembers.onNext(members)
+    }
+
+
 }

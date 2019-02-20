@@ -12,7 +12,7 @@ import SnapKit
 
 class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
     let viewModel = AddGroupViewModel()
-    private let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     private let identifier = "cellId"
     let titleTextField = FancyTextField(placeholder: "Title")
     let currencyTextField = FancyTextField(placeholder: "Currency")
@@ -142,7 +142,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
                 .subscribe(onNext: {
                     self.titleTextField.hideTextField()
                 })
-        .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
     }
 
     private func bindCurrencyTextField() {
@@ -184,28 +184,47 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         viewModel.groupMembers
                 .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
                     (_, member: User, cell: MembersCollectionViewCell) in
-                        cell.userModel = member
-                }
-                .disposed(by: disposeBag)
+                    cell.userModel = member
+                    cell.rx
+                            .swipeGesture(.left)
+                            .subscribe { recognizer in
 
+                                let cell = recognizer.element?.view as! MembersCollectionViewCell
+                                guard let user = cell.userModel else { return }
+                                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+//                                self.collectionView.deleteItems(at: [indexPath])
+                                self.viewModel.removeUser(user: user)
+                            }.disposed(by: self.disposeBag)
+                }.disposed(by: self.disposeBag)
     }
 
     private func bindAddMembersButton() {
         addMembersButton.rx
-                        .tap
-                        .subscribe(onNext: {
-                            let friendsVC = FriendsViewController()
-                            friendsVC.viewModel
-                                    .selectedUsers
-                                    .subscribe(onNext: ({users in
-                                        self.viewModel.addUsers(users: users)
-                                    })).disposed(by: self.disposeBag)
-                            self.navigationController?.pushViewController(friendsVC, animated: true)
-                        })
-                        .disposed(by: disposeBag)
+                .tap
+                .subscribe(onNext: {
+                    let friendsVC = FriendsViewController()
+                    friendsVC.collectionView.rx
+                                            .itemSelected
+                                            .subscribe { indexPath in
+                                                let cell = friendsVC.collectionView.cellForItem(at: indexPath.element!) as! FriendsCollectionViewCell
+                                                self.viewModel.addUser(user: cell.friendModel)
+                                            }
+                                            .disposed(by: friendsVC.disposeBag)
+//                    friendsVC.viewModel
+//                            .selectedUsers
+//                            .subscribe(onNext: ({ users in
+//                                self.viewModel.addUsers(users: users)
+//                            })).disposed(by: self.disposeBag)
+                    self.navigationController?.pushViewController(friendsVC, animated: true)
+                })
+                .disposed(by: disposeBag)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: contentView.frame.width-32, height: 38)
+        return CGSize(width: contentView.frame.width - 32, height: 38)
     }
+
+//    func bindCellSwipe() {
+//        collectionView.rx
+//    }
 }

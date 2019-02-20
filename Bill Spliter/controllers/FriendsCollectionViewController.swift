@@ -102,7 +102,6 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
                     cell.unSelect()
                 } else {
                     cell.select()
-                    self.viewModel.selectUser(user: cell.friendModel)
                 }
                 cell.wasSelected = !cell.wasSelected
                 //MARK: - add nice blue cell border

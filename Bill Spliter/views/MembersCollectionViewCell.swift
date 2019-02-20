@@ -17,13 +17,15 @@ class MembersCollectionViewCell: UICollectionViewCell {
     }
     let profileImageView: UIImageView = {
         let iv = UIImageView()
+        iv.layer.cornerRadius = 30/2
+        iv.clipsToBounds = false
+        iv.layer.masksToBounds = true
         return iv
     }()
 
     let nameLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont.appFont(ofSize: 13, weight: .demiBold)
-        l.backgroundColor = .red
         return l
     }()
     //TODO fix streched image
@@ -33,6 +35,7 @@ class MembersCollectionViewCell: UICollectionViewCell {
         profileImageView.snp.makeConstraints { maker in
             maker.leading.top.equalToSuperview().offset(4)
             maker.bottom.equalToSuperview().offset(-4)
+            maker.width.equalTo(30)
         }
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { maker in
@@ -40,6 +43,5 @@ class MembersCollectionViewCell: UICollectionViewCell {
             maker.top.equalToSuperview().offset(4)
             maker.bottom.trailing.equalToSuperview().offset(-4)
         }
-        profileImageView.layer.cornerRadius = profileImageView.bounds.height/2
     }
 }

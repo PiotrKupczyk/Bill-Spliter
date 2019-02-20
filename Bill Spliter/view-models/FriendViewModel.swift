@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 
 class FriendViewModel {
+    //TODO
     let dataSource = PublishSubject<[User]>()
     let selectedUsers = PublishSubject<[User]>()
     private var selectedUsersArray = [User]()
