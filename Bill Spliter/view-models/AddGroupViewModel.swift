@@ -9,15 +9,13 @@ import RxSwift
 class AddGroupViewModel {
     private let disposeBag = DisposeBag()
     let groupMembers = PublishSubject<[User]>()
+    let group = PublishSubject<Group>()
     private var members = [User]()
-//    let groupTitle = PublishSubject<String>()
-//    let groupCurrency = PublishSubject<String>()
 
-
-    public func createGroup(title: String, currency: String) -> Group {
+    public func createGroup(title: String, currency: String) {
         //here will we api service
         let newGroup = Group(title: title, imageName: "home-icon", groupBalance: 0)
-        return newGroup
+        group.onNext(newGroup)
     }
 
     public func addUser(user: User) {
@@ -27,13 +25,9 @@ class AddGroupViewModel {
 
     public func removeUser(user: User) {
         print("Removing...")
+        //proper filtration will be implemented later
         members = members.filter { $0 === user }
-//                .map { print($0) }
         groupMembers.onNext(members)
-//        groupMembers.onNext([User]())
-//        members = members.filter { $0 === user}
-//        groupMembers.onNext(members)
+
     }
-
-
 }

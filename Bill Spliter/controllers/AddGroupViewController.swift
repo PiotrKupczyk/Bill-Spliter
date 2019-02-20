@@ -11,8 +11,19 @@ import RxGesture
 import SnapKit
 
 class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
-    let viewModel = AddGroupViewModel()
+    var viewModel: AddGroupViewModel?
     var disposeBag = DisposeBag()
+
+    init(viewModel: AddGroupViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        viewModel = nil
+    }
+
     private let identifier = "cellId"
     let titleTextField = FancyTextField(placeholder: "Title")
     let currencyTextField = FancyTextField(placeholder: "Currency")
@@ -62,6 +73,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         bindGestureRecognizer()
         bindCollectionView()
         bindAddMembersButton()
+        bindSubmitButton()
     }
 
     private func setupViews() {
@@ -181,19 +193,15 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     }
 
     private func bindCollectionView() {
-        viewModel.groupMembers
+        viewModel?.groupMembers
                 .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
                     (_, member: User, cell: MembersCollectionViewCell) in
                     cell.userModel = member
                     cell.rx
                             .swipeGesture(.left)
                             .subscribe { recognizer in
-
-                                let cell = recognizer.element?.view as! MembersCollectionViewCell
-                                guard let user = cell.userModel else { return }
-                                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
-//                                self.collectionView.deleteItems(at: [indexPath])
-                                self.viewModel.removeUser(user: user)
+//                                let cell = recognizer.element?.view as! MembersCollectionViewCell
+//                                self.viewModel?.removeUser(user: cell.userModel)
                             }.disposed(by: self.disposeBag)
                 }.disposed(by: self.disposeBag)
     }
@@ -203,21 +211,25 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
                 .tap
                 .subscribe(onNext: {
                     let friendsVC = FriendsViewController()
-                    friendsVC.collectionView.rx
-                                            .itemSelected
-                                            .subscribe { indexPath in
-                                                let cell = friendsVC.collectionView.cellForItem(at: indexPath.element!) as! FriendsCollectionViewCell
-                                                self.viewModel.addUser(user: cell.friendModel)
-                                            }
-                                            .disposed(by: friendsVC.disposeBag)
-//                    friendsVC.viewModel
-//                            .selectedUsers
-//                            .subscribe(onNext: ({ users in
-//                                self.viewModel.addUsers(users: users)
-//                            })).disposed(by: self.disposeBag)
+                    friendsVC.viewModel
+                            .selectedUsers
+                            .subscribe { users in
+                                _ = users.element?.map { self.viewModel?.addUser(user: $0) }
+                            }
+                            .disposed(by: friendsVC.disposeBag)
                     self.navigationController?.pushViewController(friendsVC, animated: true)
                 })
                 .disposed(by: disposeBag)
+    }
+
+    private func bindSubmitButton() {
+        submitButton.rx
+                    .tap
+                    .subscribe(onNext: {
+                        self.viewModel?.createGroup(title: self.titleTextField.textField.text!, currency: "PLN")
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                    .disposed(by: disposeBag)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

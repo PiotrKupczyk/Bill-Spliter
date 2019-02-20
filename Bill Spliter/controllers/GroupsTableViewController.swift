@@ -13,7 +13,7 @@ import SnapKit
 
 class GroupsTableViewController: UIViewController, UITableViewDelegate {
     private let reuseIdentifier = "GroupsCell"
-    let model = GroupViewModel()
+    let viewModel = GroupViewModel()
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         setupLayouts()
         bindTableView()
 
-        model.fetchData()
+        viewModel.fetchData()
     }
     
     let plusButton = UIButton()
@@ -38,7 +38,11 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         plusButton.rx
                 .tap
                 .subscribe(onNext: {
-                    let vc = AddGroupViewController()
+                    let vc = AddGroupViewController(viewModel: AddGroupViewModel())
+                    vc.viewModel?.group.subscribe { group in
+                        print(group)
+                        self.viewModel.addGroup(group: group.element!)
+                    }.disposed(by: self.disposeBag)
                     vc.title = "Add group"
                     self.navigationController?.pushViewController(vc, animated: true)
                 })
@@ -62,32 +66,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 //            maker.bottom.equalTo(view.snp.bottomMargin)
         }
     }
-    
-    private func bindTableView() {
-        model.dataSource.bind(to: tableView.rx.items(cellIdentifier: reuseIdentifier)) {
-            (_, group: Group, cell: GroupsTableViewCell) in
-            cell.groupModel = group
-            }.disposed(by: disposeBag)
-        
-        tableView.rx.itemSelected.subscribe(onNext: {
-            (indexPath) in
-            do {
-                let group = try self.model.dataSource.value()[indexPath.row]
-                let vc = BillsViewController()
-                vc.title = "\(group.title) bills"
-                self.navigationController?.pushViewController(vc, animated: true)
-            } catch {
-                fatalError()
-            }
-        }).disposed(by: disposeBag)
-    }
 
-    // MARK: - Table view data sourc
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -108,5 +87,24 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 //            maker.height.equalTo(54)
 //        }
         
+    }
+
+    private func bindTableView() {
+        viewModel.dataSource.bind(to: tableView.rx.items(cellIdentifier: reuseIdentifier)) {
+            (_, group: Group, cell: GroupsTableViewCell) in
+            cell.groupModel = group
+        }.disposed(by: disposeBag)
+
+        tableView.rx.itemSelected.subscribe(onNext: {
+            (indexPath) in
+            do {
+                let group = try self.viewModel.dataSource.value()[indexPath.row]
+                let vc = BillsViewController()
+                vc.title = "\(group.title) bills"
+                self.navigationController?.pushViewController(vc, animated: true)
+            } catch {
+                fatalError()
+            }
+        }).disposed(by: disposeBag)
     }
 }

@@ -32,11 +32,16 @@ class FriendViewModel {
         friends.append(friend)
         friends.append(friend)
         friends.append(friend)
+
         dataSource.onNext(friends)
     }
 
     func selectUser(user: User) {
         selectedUsersArray.append(user)
+    }
+
+    public func addUsers() {
         selectedUsers.onNext(selectedUsersArray)
     }
+
 }

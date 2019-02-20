@@ -21,38 +21,10 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
         setupViews()
         setupLayouts()
         bindCollectionView()
+        bindSubmitButton()
         viewModel.fetchData()
     }
 
-    //MARK: - Custom views declaration
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
-    let subTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.appFont(ofSize: 13, weight: .regular)
-        label.text = "Find your friends using name or email."
-        label.textColor = UIColor.textLightGray
-        label.backgroundColor = .white
-        label.textAlignment = .center
-        return label
-    }()
-    
-    let searchBarView = SearchBar()
-    
-    let submitButton: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = UIColor(hexString: "#007AFF")
-        btn.layer.cornerRadius = 25
-        
-        btn.setTitle("Add", for: .normal)
-        btn.titleLabel?.font = UIFont.appFont(ofSize: 16, weight: .bold)
-        btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 0, height: 3)
-        
-        return btn
-    }()
-    
     //MARK: - Views setup
 
     private func setupViews() {
@@ -102,6 +74,7 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
                     cell.unSelect()
                 } else {
                     cell.select()
+                    self.viewModel.selectUser(user: cell.friendModel)
                 }
                 cell.wasSelected = !cell.wasSelected
                 //MARK: - add nice blue cell border
@@ -114,6 +87,16 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
             }.disposed(by: disposeBag)
     }
 
+    public func bindSubmitButton() {
+        submitButton.rx
+                    .tap
+                    .subscribe(onNext: {
+                        self.viewModel.addUsers()
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                    .disposed(by: disposeBag)
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
@@ -121,4 +104,33 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 140)
     }
+
+    //MARK: - Custom views declaration
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+    let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.appFont(ofSize: 13, weight: .regular)
+        label.text = "Find your friends using name or email."
+        label.textColor = UIColor.textLightGray
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+
+    let searchBarView = SearchBar()
+
+    let submitButton: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = UIColor(hexString: "#007AFF")
+        btn.layer.cornerRadius = 25
+
+        btn.setTitle("Add", for: .normal)
+        btn.titleLabel?.font = UIFont.appFont(ofSize: 16, weight: .bold)
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.5
+        btn.layer.shadowOffset = CGSize(width: 0, height: 3)
+
+        return btn
+    }()
 }
