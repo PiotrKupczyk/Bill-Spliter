@@ -14,20 +14,29 @@ import SnapKit
 class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     private let reuseIdentifier = "friendsCell"
     let disposeBag = DisposeBag()
-    let viewModel = FriendViewModel()
-    
+    private var viewModel: FriendViewModel!
+    var sth: Observable<Bool>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupLayouts()
         bindCollectionView()
         bindSubmitButton()
+        bindBackButton()
         viewModel.fetchData()
+
+    }
+
+    convenience init(viewModel: FriendViewModel) {
+        self.init()
+        self.viewModel = viewModel
     }
 
     //MARK: - Views setup
 
     private func setupViews() {
+        collectionView.allowsMultipleSelection = true
         view.backgroundColor = .white
         collectionView.backgroundColor = .white
         collectionView.register(FriendsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -66,41 +75,58 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }
 
     public func bindCollectionView() {
-        collectionView.rx.itemSelected
-            .subscribe(onNext: {
-                (indexPath) in
-                guard let cell = self.collectionView.cellForItem(at: indexPath) as? FriendsCollectionViewCell else {return}
-                if cell.wasSelected {
-                    cell.unSelect()
-                } else {
-                    cell.select()
-                    self.viewModel.selectUser(user: cell.friendModel)
+        collectionView.rx
+                    .modelDeselected(User.self)
+                    .bind(to: self.viewModel.deSelect)
+                    .disposed(by: disposeBag)
+
+        collectionView.rx
+                .modelSelected(User.self)
+                .bind(to: self.viewModel.select)
+                .disposed(by: disposeBag)
+
+        Observable.merge([collectionView.rx.itemDeselected.asObservable(), collectionView.rx.itemSelected.asObservable()])
+                    .map({ _ -> Bool in
+                        return !(self.collectionView.indexPathsForSelectedItems?.isEmpty ?? true)
+                    })
+                    .bind(to: self.viewModel.anyUserSelected)
+                    .disposed(by: disposeBag)
+
+        viewModel.usersObservable
+                .bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier)) {
+                    (_, friend: User, cell: FriendsCollectionViewCell) in
+                    cell.userModel = friend
                 }
-                cell.wasSelected = !cell.wasSelected
-                //MARK: - add nice blue cell border
-                //MARK: - add to friends in db
-            }).disposed(by: disposeBag)
-        
-        viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier)) {
-            (_, friend: User, cell: FriendsCollectionViewCell) in
-            cell.friendModel = friend
-            }.disposed(by: disposeBag)
+                .disposed(by: disposeBag)
     }
 
     public func bindSubmitButton() {
+
         submitButton.rx
-                    .tap
-                    .subscribe(onNext: {
-                        self.viewModel.addUsers()
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                    .disposed(by: disposeBag)
+                .tap
+                .bind(to: viewModel.submit)
+                .disposed(by: disposeBag)
+
+        //Enable button when any user is chosen
+        viewModel.isAnyUserSelected
+                 .bind(to: self.submitButton.rx.isEnabled)
+                 .disposed(by: disposeBag)
+    }
+
+    public func bindBackButton() {
+        guard let navBackItem = navigationController?.navigationItem.leftBarButtonItem else {
+            return
+        }
+        navBackItem.rx
+                .tap
+                .bind(to: viewModel.cancel)
+                .disposed(by: disposeBag)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 140)
     }
@@ -124,7 +150,7 @@ class FriendsViewController: UIViewController, UICollectionViewDelegateFlowLayou
         let btn = UIButton()
         btn.backgroundColor = UIColor(hexString: "#007AFF")
         btn.layer.cornerRadius = 25
-
+        btn.isEnabled = false
         btn.setTitle("Add", for: .normal)
         btn.titleLabel?.font = UIFont.appFont(ofSize: 16, weight: .bold)
         btn.layer.shadowColor = UIColor.black.cgColor

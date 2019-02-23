@@ -11,17 +11,12 @@ import RxGesture
 import SnapKit
 
 class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
-    var viewModel: AddGroupViewModel?
+    public var viewModel: AddGroupViewModel!
     var disposeBag = DisposeBag()
 
-    init(viewModel: AddGroupViewModel) {
-        super.init(nibName: nil, bundle: nil)
+    convenience init(viewModel: AddGroupViewModel) {
+        self.init()
         self.viewModel = viewModel
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        viewModel = nil
     }
 
     private let identifier = "cellId"
@@ -90,7 +85,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     private func setupLayouts() {
         contentView.addSubview(titleTextField)
         titleTextField.snp.makeConstraints { maker in
-//            maker.topMargin.equalToSuperview()
             maker.top.equalTo(contentView.snp.topMargin).inset(4)
             maker.leadingMargin.equalToSuperview().offset(16)
             maker.trailingMargin.equalToSuperview().offset(-16)
@@ -193,16 +187,18 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     }
 
     private func bindCollectionView() {
-        viewModel?.groupMembers
+        viewModel.usersObservable
                 .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
                     (_, member: User, cell: MembersCollectionViewCell) in
                     cell.userModel = member
                     cell.rx
                             .swipeGesture(.left)
-                            .subscribe { recognizer in
-//                                let cell = recognizer.element?.view as! MembersCollectionViewCell
-//                                self.viewModel?.removeUser(user: cell.userModel)
-                            }.disposed(by: self.disposeBag)
+                            .when(.ended)
+                            .subscribe(onNext: { recognizer in
+                                let cell = recognizer.view as! MembersCollectionViewCell
+                                self.viewModel?.removeUser(user: cell.userModel)
+                            })
+                            .disposed(by: self.disposeBag)
                 }.disposed(by: self.disposeBag)
     }
 
@@ -210,14 +206,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         addMembersButton.rx
                 .tap
                 .subscribe(onNext: {
-                    let friendsVC = FriendsViewController()
-                    friendsVC.viewModel
-                            .selectedUsers
-                            .subscribe { users in
-                                _ = users.element?.map { self.viewModel?.addUser(user: $0) }
-                            }
-                            .disposed(by: friendsVC.disposeBag)
-                    self.navigationController?.pushViewController(friendsVC, animated: true)
+                    self.prepareNavigationToAddFriends()
                 })
                 .disposed(by: disposeBag)
     }
@@ -226,7 +215,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         submitButton.rx
                     .tap
                     .subscribe(onNext: {
-                        self.viewModel?.createGroup(title: self.titleTextField.textField.text!, currency: "PLN")
+                        self.viewModel.createGroup(title: self.titleTextField.textField.text!, currency: "PLN")
                         self.navigationController?.popViewController(animated: true)
                     })
                     .disposed(by: disposeBag)
@@ -236,7 +225,43 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         return CGSize(width: contentView.frame.width - 32, height: 38)
     }
 
-//    func bindCellSwipe() {
-//        collectionView.rx
-//    }
+    private func prepareNavigationToAddFriends() {
+        let friendsViewModel = FriendViewModel()
+        let friendsVC = FriendsViewController(viewModel: friendsViewModel)
+        friendsViewModel.didSubmit
+                        .subscribe(onNext: {
+//                            [weak self] in self?.dismiss(animated: true)
+//                            _ = users.element?.map { self.viewModel.addUser(user: $0)
+
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                        .disposed(by: friendsVC.disposeBag)
+
+        friendsViewModel.didSelect
+                        .subscribe(onNext: { user in
+                            self.viewModel.addUser(user: user)
+                        })
+                        .disposed(by: friendsVC.disposeBag)
+
+
+        friendsViewModel.didDeSelect
+                .subscribe(onNext: { user in
+                    self.viewModel.removeUser(user: user)
+                })
+                .disposed(by: friendsVC.disposeBag)
+
+        friendsViewModel.didCancel
+                        .subscribe(onNext: {
+                            self.viewModel.removeAllUsers()
+//                            self.navigationController?.popViewController(animated: true)
+                        })
+                        .disposed(by: friendsVC.disposeBag)
+
+        navigationController?.rx.willShow.bind { controller, animated in
+            print("wilShow")
+        }.disposed(by: friendsVC.disposeBag)
+
+//        self.present(friendsVC, animated: true)
+        self.navigationController?.pushViewController(friendsVC, animated: true)
+    }
 }

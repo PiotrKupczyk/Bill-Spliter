@@ -39,10 +39,11 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
                 .tap
                 .subscribe(onNext: {
                     let vc = AddGroupViewController(viewModel: AddGroupViewModel())
-                    vc.viewModel?.group.subscribe { group in
-                        print(group)
-                        self.viewModel.addGroup(group: group.element!)
-                    }.disposed(by: self.disposeBag)
+                    vc.viewModel.groupObservable
+                                .subscribe { group in
+                                    print(group)
+                                    self.viewModel.addGroup(group: group.element!)
+                                }.disposed(by: self.disposeBag)
                     vc.title = "Add group"
                     self.navigationController?.pushViewController(vc, animated: true)
                 })

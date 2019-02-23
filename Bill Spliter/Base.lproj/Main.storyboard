@@ -44,7 +44,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="kLh-VL-Tf0" id="lGJ-Jz-kO0"/>
+                            <outlet property="users" destination="kLh-VL-Tf0" id="lGJ-Jz-kO0"/>
                             <outlet property="delegate" destination="kLh-VL-Tf0" id="akN-ZA-4Dn"/>
                         </connections>
                     </tableView>
@@ -73,7 +73,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="efJ-GG-1eI" id="zIv-xP-C5D"/>
+                            <outlet property="users" destination="efJ-GG-1eI" id="zIv-xP-C5D"/>
                             <outlet property="delegate" destination="efJ-GG-1eI" id="h7S-bc-ktg"/>
                         </connections>
                     </tableView>

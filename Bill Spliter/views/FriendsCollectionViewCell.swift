@@ -9,11 +9,24 @@
 import UIKit
 import Kingfisher
 class FriendsCollectionViewCell: UICollectionViewCell {
-    
-    var friendModel: User! {
+    override var isSelected: Bool {
+        get {
+            return super.isSelected
+        }
+        set {
+            if newValue {
+                self.select()
+            } else {
+                self.unSelect()
+            }
+            super.isSelected = newValue
+        }
+    }
+
+    var userModel: User! {
         didSet {
-            profileImageView.kf.setImage(with: friendModel.imageURL)
-            nameLabel.text = friendModel.name
+            profileImageView.kf.setImage(with: userModel.imageURL)
+            nameLabel.text = userModel.name
             setupLayouts()
         }
     }
@@ -50,6 +63,7 @@ class FriendsCollectionViewCell: UICollectionViewCell {
             maker.bottom.equalTo(snp.bottom).inset(4)
         }
     }
+
     public var wasSelected = false
 }
 

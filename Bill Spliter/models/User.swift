@@ -8,22 +8,28 @@
 
 import Foundation
 class User {
+    private let _id: String
     private let image: String
-    private let privName: String
+    private let _name: String
     private let friendsIds: [String] = [String]()
     
-    init(imageURL: String, name: String) {
+    init(id: String, imageURL: String, name: String) {
         self.image = imageURL
-        self.privName = name
+        self._name = name
+        _id = id
     }
 }
 extension User {
+    var id: String {
+        return _id
+    }
+
     var imageURL: URL? {
         return URL(string: image)
     }
     
     var name: String {
-        return privName
+        return _name
     }
 }
 
