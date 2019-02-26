@@ -38,18 +38,23 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         plusButton.rx
                 .tap
                 .subscribe(onNext: {
-                    let vc = AddGroupViewController(viewModel: AddGroupViewModel())
-                    vc.viewModel.groupObservable
-                                .subscribe { group in
-                                    print(group)
-                                    self.viewModel.addGroup(group: group.element!)
-                                }.disposed(by: self.disposeBag)
-                    vc.title = "Add group"
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.prepareNavigationToAddGroup()
                 })
                 .disposed(by: disposeBag)
     }
-    
+
+    private func prepareNavigationToAddGroup() {
+        let groupViewModel = AddGroupViewModel()
+        let vc = AddGroupViewController(viewModel: groupViewModel)
+
+//        vc.viewModel.groupObservable
+//                    .subscribe { group in
+//                        self.viewModel.addGroup(group: group.element!)
+//                    }.disposed(by: self.disposeBag)
+        vc.title = "Add group"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
     private func setupLayouts() {
         view.addSubview(plusButton)
         plusButton.snp.makeConstraints { maker in
@@ -100,7 +105,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             (indexPath) in
             do {
                 let group = try self.viewModel.dataSource.value()[indexPath.row]
-                let vc = BillsViewController()
+                let vc = GroupBillsViewController()
                 vc.title = "\(group.title) bills"
                 self.navigationController?.pushViewController(vc, animated: true)
             } catch {

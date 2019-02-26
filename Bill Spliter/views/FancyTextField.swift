@@ -13,7 +13,6 @@ import SnapKit
 class FancyTextField: UIView {
     private var bottomConstraint: Constraint? = nil
     public private(set) var isActive = false
-    private let disposeBag = DisposeBag()
     private let placeholderLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont.appFont(ofSize: 17, weight: .regular)

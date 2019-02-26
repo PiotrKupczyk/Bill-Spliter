@@ -10,9 +10,7 @@
 		02BE39DC4AC7534010A52AAD /* Pods_Bill_SpliterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */; };
 		0B57C58D3F7022212E961DC5 /* Pods_Bill_Spliter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */; };
 		8325179C221059DB00BDB198 /* InitialsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179B221059DB00BDB198 /* InitialsImageView.swift */; };
-		8325179E2210638600BDB198 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179D2210638600BDB198 /* MainTabBarController.swift */; };
 		832517A02210660200BDB198 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8325179F2210660200BDB198 /* GroupsTableViewController.swift */; };
-		832517A22210665400BDB198 /* FriendsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A12210665400BDB198 /* FriendsCollectionViewController.swift */; };
 		832517A422106E5000BDB198 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A322106E5000BDB198 /* GroupsTableViewCell.swift */; };
 		832517A82210716C00BDB198 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A72210716C00BDB198 /* UIFont.swift */; };
 		832517AA221084A100BDB198 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832517A9221084A100BDB198 /* GroupViewModel.swift */; };
@@ -21,21 +19,23 @@
 		833678F52210529300331E5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833678F42210529300331E5D /* Assets.xcassets */; };
 		833678F82210529300331E5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833678F62210529300331E5D /* LaunchScreen.storyboard */; };
 		833679032210529400331E5D /* Bill_SpliterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833679022210529400331E5D /* Bill_SpliterTests.swift */; };
-		83AE1F212211D7BD003A4D60 /* FriendsSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */; };
-		83AE1F2322131A36003A4D60 /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */; };
 		83AE1F2522132566003A4D60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2422132566003A4D60 /* User.swift */; };
-		83AE1F27221334B3003A4D60 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F26221334B3003A4D60 /* FriendViewModel.swift */; };
-		83AE1F292214939D003A4D60 /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F282214939D003A4D60 /* BillsViewController.swift */; };
-		83AE1F2B2215C25D003A4D60 /* BillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */; };
 		83AE1F2D2215C338003A4D60 /* Bill .swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2C2215C338003A4D60 /* Bill .swift */; };
-		83AE1F2F2215C755003A4D60 /* BillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2E2215C755003A4D60 /* BillViewModel.swift */; };
 		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
 		B6E0E0900473EA51C885C570 /* KeyboardFriendlyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */; };
+		B6E0E16E27F5026055366504 /* GroupBillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8582281EEA4A71644C2 /* GroupBillsCollectionViewCell.swift */; };
+		B6E0E1B6485A0A6EE421402D /* AddUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EE927C3B0B2E309EE876 /* AddUserCollectionViewCell.swift */; };
+		B6E0E33C2C4373FE52F85703 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EFAD1872764D8C98970E /* AddUserViewController.swift */; };
+		B6E0E37B2E752EDBBC94C7A4 /* GroupBillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED8A69C4F7F7797E7B20 /* GroupBillsViewController.swift */; };
 		B6E0E3B21E90B06BB7131D02 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */; };
-		B6E0E5FF9B22CA492ADB7B9B /* MembersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */; };
+		B6E0E4358104FF6924E682F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED3AA1D0595F4236BDFF /* MainTabBarController.swift */; };
+		B6E0E43B50AD33F2DE3FAB28 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9DA925FD230C1737731 /* AddUserViewModel.swift */; };
+		B6E0E60E87C6223E6AA78BF1 /* AddUserSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EA6E614E89C143E7607A /* AddUserSearchBarView.swift */; };
 		B6E0E8AB20EA4FF8570969EE /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8D35368B6F0A6096A90 /* AddGroupViewModel.swift */; };
+		B6E0E8F300B6A6191E6559B3 /* GroupBillsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9DBCC9C7D90F5D74B67 /* GroupBillsViewModel.swift */; };
 		B6E0E944C614BFB0BCE8D3E4 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED020A48C5997EAAD84D /* AddGroupViewController.swift */; };
 		B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */; };
+		B6E0EBE424C9AD34406F92A6 /* AddGroupUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9B71E89DCE54A0490C4 /* AddGroupUserCollectionViewCell.swift */; };
 		B6E0EEE74E8FA30CC5740250 /* BehaviorRelay.swift in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,9 +53,7 @@
 		4B0AAC95A8FC3D605DCCDDE9 /* Pods-Bill Spliter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.release.xcconfig"; sourceTree = "<group>"; };
 		7803FF0D6E99CC4725433132 /* Pods-Bill SpliterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.release.xcconfig"; sourceTree = "<group>"; };
 		8325179B221059DB00BDB198 /* InitialsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsImageView.swift; sourceTree = "<group>"; };
-		8325179D2210638600BDB198 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8325179F2210660200BDB198 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
-		832517A12210665400BDB198 /* FriendsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewController.swift; sourceTree = "<group>"; };
 		832517A322106E5000BDB198 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		832517A72210716C00BDB198 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		832517A9221084A100BDB198 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
@@ -68,25 +66,27 @@
 		833678FE2210529400331E5D /* Bill SpliterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bill SpliterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833679022210529400331E5D /* Bill_SpliterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill_SpliterTests.swift; sourceTree = "<group>"; };
 		833679042210529400331E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchBarView.swift; sourceTree = "<group>"; };
-		83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		83AE1F2422132566003A4D60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		83AE1F26221334B3003A4D60 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
-		83AE1F282214939D003A4D60 /* BillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsViewController.swift; sourceTree = "<group>"; };
-		83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		83AE1F2C2215C338003A4D60 /* Bill .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bill .swift"; sourceTree = "<group>"; };
-		83AE1F2E2215C755003A4D60 /* BillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewModel.swift; sourceTree = "<group>"; };
 		83DC413C2211CA2600B6BDF1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_SpliterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.swift; sourceTree = "<group>"; };
-		B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		B6E0E8582281EEA4A71644C2 /* GroupBillsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E8D35368B6F0A6096A90 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
+		B6E0E9B71E89DCE54A0490C4 /* AddGroupUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6E0E9DA925FD230C1737731 /* AddUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
+		B6E0E9DBCC9C7D90F5D74B67 /* GroupBillsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewModel.swift; sourceTree = "<group>"; };
+		B6E0EA6E614E89C143E7607A /* AddUserSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserSearchBarView.swift; sourceTree = "<group>"; };
 		B6E0ED020A48C5997EAAD84D /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		B6E0ED3AA1D0595F4236BDFF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B6E0ED8A69C4F7F7797E7B20 /* GroupBillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewController.swift; sourceTree = "<group>"; };
 		B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFriendlyVC.swift; sourceTree = "<group>"; };
 		B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
+		B6E0EE927C3B0B2E309EE876 /* AddUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6E0EFAD1872764D8C98970E /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,11 +187,7 @@
 			children = (
 				8325179B221059DB00BDB198 /* InitialsImageView.swift */,
 				832517A322106E5000BDB198 /* GroupsTableViewCell.swift */,
-				83AE1F202211D7BD003A4D60 /* FriendsSearchBarView.swift */,
-				83AE1F2222131A36003A4D60 /* FriendsCollectionViewCell.swift */,
-				83AE1F2A2215C25D003A4D60 /* BillsCollectionViewCell.swift */,
 				B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */,
-				B6E0E688CDE96CE37DAD9F5C /* MembersCollectionViewCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -200,8 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				832517A9221084A100BDB198 /* GroupViewModel.swift */,
-				83AE1F26221334B3003A4D60 /* FriendViewModel.swift */,
-				83AE1F2E2215C755003A4D60 /* BillViewModel.swift */,
 			);
 			path = "view-models";
 			sourceTree = "<group>";
@@ -209,12 +203,12 @@
 		83367910221052F000331E5D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8325179D2210638600BDB198 /* MainTabBarController.swift */,
 				8325179F2210660200BDB198 /* GroupsTableViewController.swift */,
-				832517A12210665400BDB198 /* FriendsCollectionViewController.swift */,
-				83AE1F282214939D003A4D60 /* BillsViewController.swift */,
 				B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */,
 				B6E0EFFAD6A03B0298194C78 /* AddGroup */,
+				B6E0E941C810689AA78C33AC /* AddUser */,
+				B6E0E6FDFAD69EEF69012DD5 /* GroupBills */,
+				B6E0ED3AA1D0595F4236BDFF /* MainTabBarController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -229,11 +223,33 @@
 			path = "project-files";
 			sourceTree = "<group>";
 		};
+		B6E0E6FDFAD69EEF69012DD5 /* GroupBills */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0ED8A69C4F7F7797E7B20 /* GroupBillsViewController.swift */,
+				B6E0E9DBCC9C7D90F5D74B67 /* GroupBillsViewModel.swift */,
+				B6E0E8582281EEA4A71644C2 /* GroupBillsCollectionViewCell.swift */,
+			);
+			path = GroupBills;
+			sourceTree = "<group>";
+		};
+		B6E0E941C810689AA78C33AC /* AddUser */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0EFAD1872764D8C98970E /* AddUserViewController.swift */,
+				B6E0E9DA925FD230C1737731 /* AddUserViewModel.swift */,
+				B6E0EE927C3B0B2E309EE876 /* AddUserCollectionViewCell.swift */,
+				B6E0EA6E614E89C143E7607A /* AddUserSearchBarView.swift */,
+			);
+			path = AddUser;
+			sourceTree = "<group>";
+		};
 		B6E0EFFAD6A03B0298194C78 /* AddGroup */ = {
 			isa = PBXGroup;
 			children = (
 				B6E0ED020A48C5997EAAD84D /* AddGroupViewController.swift */,
 				B6E0E8D35368B6F0A6096A90 /* AddGroupViewModel.swift */,
+				B6E0E9B71E89DCE54A0490C4 /* AddGroupUserCollectionViewCell.swift */,
 			);
 			path = AddGroup;
 			sourceTree = "<group>";
@@ -433,26 +449,26 @@
 				832517AC2210852700BDB198 /* Group.swift in Sources */,
 				832517AA221084A100BDB198 /* GroupViewModel.swift in Sources */,
 				833678EE2210528E00331E5D /* AppDelegate.swift in Sources */,
-				832517A22210665400BDB198 /* FriendsCollectionViewController.swift in Sources */,
-				83AE1F27221334B3003A4D60 /* FriendViewModel.swift in Sources */,
-				83AE1F2B2215C25D003A4D60 /* BillsCollectionViewCell.swift in Sources */,
-				83AE1F2322131A36003A4D60 /* FriendsCollectionViewCell.swift in Sources */,
 				832517A82210716C00BDB198 /* UIFont.swift in Sources */,
 				832517A422106E5000BDB198 /* GroupsTableViewCell.swift in Sources */,
 				83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */,
-				83AE1F2F2215C755003A4D60 /* BillViewModel.swift in Sources */,
 				8325179C221059DB00BDB198 /* InitialsImageView.swift in Sources */,
 				832517A02210660200BDB198 /* GroupsTableViewController.swift in Sources */,
-				83AE1F212211D7BD003A4D60 /* FriendsSearchBarView.swift in Sources */,
-				83AE1F292214939D003A4D60 /* BillsViewController.swift in Sources */,
 				83AE1F2522132566003A4D60 /* User.swift in Sources */,
-				8325179E2210638600BDB198 /* MainTabBarController.swift in Sources */,
 				B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */,
 				B6E0E0900473EA51C885C570 /* KeyboardFriendlyVC.swift in Sources */,
-				B6E0E5FF9B22CA492ADB7B9B /* MembersCollectionViewCell.swift in Sources */,
 				B6E0E944C614BFB0BCE8D3E4 /* AddGroupViewController.swift in Sources */,
 				B6E0E8AB20EA4FF8570969EE /* AddGroupViewModel.swift in Sources */,
 				B6E0E3B21E90B06BB7131D02 /* UIButton.swift in Sources */,
+				B6E0E33C2C4373FE52F85703 /* AddUserViewController.swift in Sources */,
+				B6E0E43B50AD33F2DE3FAB28 /* AddUserViewModel.swift in Sources */,
+				B6E0E1B6485A0A6EE421402D /* AddUserCollectionViewCell.swift in Sources */,
+				B6E0E60E87C6223E6AA78BF1 /* AddUserSearchBarView.swift in Sources */,
+				B6E0E37B2E752EDBBC94C7A4 /* GroupBillsViewController.swift in Sources */,
+				B6E0E8F300B6A6191E6559B3 /* GroupBillsViewModel.swift in Sources */,
+				B6E0E16E27F5026055366504 /* GroupBillsCollectionViewCell.swift in Sources */,
+				B6E0EBE424C9AD34406F92A6 /* AddGroupUserCollectionViewCell.swift in Sources */,
+				B6E0E4358104FF6924E682F9 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

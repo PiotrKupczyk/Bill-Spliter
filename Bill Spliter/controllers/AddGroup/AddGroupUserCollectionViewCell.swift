@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class MembersCollectionViewCell: UICollectionViewCell {
+class AddGroupUserCollectionViewCell: UICollectionViewCell {
     var userModel: User! {
         didSet {
             nameLabel.text = userModel.name

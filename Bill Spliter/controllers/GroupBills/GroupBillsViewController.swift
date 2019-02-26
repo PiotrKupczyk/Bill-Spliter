@@ -1,5 +1,5 @@
 //
-//  BillsViewController.swift
+//  GroupBillsViewController.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 13/02/2019.
@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class BillsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
-    let resuseIdentifier = "cellId"
-    let viewModel = BillViewModel()
+class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+    private let resuseIdentifier = "cellId"
+    let viewModel = GroupBillsViewModel()
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class BillsViewController: UIViewController, UICollectionViewDelegateFlowLayout 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     func setupViews() {
-        collectionView.register(BillsCollectionViewCell.self, forCellWithReuseIdentifier: resuseIdentifier)
+        collectionView.register(GroupBillsCollectionViewCell.self, forCellWithReuseIdentifier: resuseIdentifier)
         collectionView.backgroundColor = .white
         view.backgroundColor = .white
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -46,7 +46,7 @@ class BillsViewController: UIViewController, UICollectionViewDelegateFlowLayout 
     
     private func bindCollectionView() {
         viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: resuseIdentifier)) {
-            (_, bill: Bill, cell: BillsCollectionViewCell) in
+            (_, bill: Bill, cell: GroupBillsCollectionViewCell) in
             cell.billModel = bill
         }.disposed(by: disposeBag)
     }

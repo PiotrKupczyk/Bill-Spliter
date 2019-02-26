@@ -1,5 +1,5 @@
 //
-//  BillViewModel.swift
+//  GroupBillsViewModel.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 14/02/2019.
@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class BillViewModel {
+class GroupBillsViewModel {
     public let dataSource = PublishSubject<[Bill]>()
     
     public func fetchData() {

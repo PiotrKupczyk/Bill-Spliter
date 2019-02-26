@@ -1,5 +1,5 @@
 //
-//  FriendsCollectionViewCell.swift
+//  AddUserCollectionViewCell.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 12/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-class FriendsCollectionViewCell: UICollectionViewCell {
+class AddUserCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         get {
             return super.isSelected
@@ -17,7 +17,7 @@ class FriendsCollectionViewCell: UICollectionViewCell {
             if newValue {
                 self.select()
             } else {
-                self.unSelect()
+                self.deSelect()
             }
             super.isSelected = newValue
         }
@@ -67,7 +67,7 @@ class FriendsCollectionViewCell: UICollectionViewCell {
     public var wasSelected = false
 }
 
-extension FriendsCollectionViewCell {
+extension AddUserCollectionViewCell {
     func select() {
         let borderLayer = CALayer()
         borderLayer.frame = self.bounds
@@ -85,7 +85,7 @@ extension FriendsCollectionViewCell {
         self.layer.addSublayer(borderLayer)
     }
     
-    func unSelect() {
+    func deSelect() {
         if layer.sublayers!.count >= 4 {
             _ = layer.sublayers?.popLast()
         }

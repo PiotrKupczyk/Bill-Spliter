@@ -1,5 +1,5 @@
 //
-//  FriendsSearchBarView.swift
+//  AddUserSearchBarView.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 11/02/2019.

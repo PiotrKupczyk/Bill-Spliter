@@ -8,18 +8,21 @@ import RxSwift
 import RxCocoa
 
 class AddGroupViewModel {
-    private let groupMembers = BehaviorRelay<[User]>(value: [])
+    private let users = BehaviorRelay<[User]>(value: [])
     private let newGroup = PublishSubject<Group>()
 
     lazy var usersObservable: Observable<[User]> = {
-        return self.groupMembers.asObservable()
+        return self.users.asObservable()
     }()
 
-    lazy var groupObservable: Observable<Group> = {
-        return self.newGroup.asObservable()
-    }()
+    let submitPressed = PublishSubject<Void>()
+
+    let titleSet = PublishSubject<String>()
+
+    let currencySet = PublishSubject<String>()
 
     init() {
+
     }
 
     public func createGroup(title: String, currency: String) {
@@ -28,22 +31,26 @@ class AddGroupViewModel {
         newGroup.onNext(group)
     }
 
+    public func updateUsers(with newUsers: [User]) {
+        self.users.accept(newUsers)
+    }
+
     public func addUser(user: User) {
-        if !groupMembers.value.contains(where: { $0.id == user.id}) {
-            groupMembers.acceptAppending(user)
+        if !users.value.contains(where: { $0.id == user.id}) {
+            users.acceptAppending(user)
         }
     }
 
     public func removeUser(user: User) {
-        print("Removing...")
+        print("Removing... \(user.name)")
         //proper filtration will be implemented later
-        groupMembers.accept(groupMembers.value.filter { $0.id != user.id })
+        users.accept(users.value.filter { $0.id != user.id })
     }
 
     public func removeAllUsers() {
         print("RemovingAll...")
         //proper filtration will be implemented later
-        groupMembers.accept([])
+        users.accept([])
     }
 }
 

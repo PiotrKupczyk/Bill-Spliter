@@ -1,5 +1,5 @@
 //
-//  BillsCollectionViewCell.swift
+//  GroupBillsCollectionViewCell.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 14/02/2019.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class BillsCollectionViewCell: UICollectionViewCell {
+class GroupBillsCollectionViewCell: UICollectionViewCell {
     var billModel: Bill! {
         didSet {
             imageView.kf.setImage(with: billModel.imageURL)

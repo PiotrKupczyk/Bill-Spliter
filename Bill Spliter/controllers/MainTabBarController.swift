@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
         let groupsVC = GroupsTableViewController()
         groupsVC.tabBarItem = UITabBarItem(title: "Groups", image: UIImage(named: "cart-icon"), tag: 0)
         
-        let friendsVC = FriendsViewController()
+        let friendsVC = AddUserViewController()
         friendsVC.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "login-icon"), tag: 1)
         
         let tabBarList = [groupsVC, friendsVC]
