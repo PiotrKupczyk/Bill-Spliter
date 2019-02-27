@@ -20,7 +20,7 @@ class AddUserViewModelViewModel {
 
     let selectedUsers = BehaviorRelay<[User]>(value: [])
 
-    struct Inputs {
+    struct UIInputs {
         let selectUser: Observable<User>
         let deSelectUser: Observable<User>
         let submitTrigger: Observable<Void>
@@ -29,7 +29,7 @@ class AddUserViewModelViewModel {
 
     //MARK: - Output
 
-    var didSubmit: Observable<[User]> = Observable.never()
+    var didSubmit: Observable<[User]>!
 
     lazy var isSubmitEnabled: Observable<Bool> = {
         return self.selectedUsers.asObservable()
@@ -42,7 +42,7 @@ class AddUserViewModelViewModel {
         return self.filteredUsers.asObservable()
     }()
 
-    init(_ inputs: Inputs) {
+    init(_ inputs: UIInputs) {
         didSubmit = inputs.submitTrigger
                             .map { self.selectedUsers.value }
 

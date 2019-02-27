@@ -11,13 +11,113 @@ import RxGesture
 import SnapKit
 
 class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
-    public var viewModel: AddGroupViewModel!
+    var viewModelFactory: (AddGroupViewModel.UIInputs) -> AddGroupViewModel
+            = { _ in fatalError("Must provide factory function first.") }
+
+    private var viewModel: AddGroupViewModel!
     let disposeBag = DisposeBag()
     var swipeBag = DisposeBag()
 
-    convenience init(viewModel: AddGroupViewModel) {
-        self.init()
-        self.viewModel = viewModel
+    private func setupViewModel() {
+        let inputs = AddGroupViewModel.UIInputs(
+            submitTriggered: submitButton.rx.tap.asObservable(),
+            titleTypingTriggered: titleTextField.textField.rx.text.orEmpty.asObservable(),
+            currencyTypingTriggered: currencyTextField.textField.rx.text.orEmpty.asObservable()
+        )
+        viewModel = viewModelFactory(inputs)
+    }
+
+    private func bindTittleTextField() {
+        let view = titleTextField as UIView
+        view.rx
+                .tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { gesture in
+                    if !self.titleTextField.isActive {
+                        self.titleTextField.showTextField()
+                    }
+                })
+                .disposed(by: disposeBag)
+
+        titleTextField.textField.rx
+                .controlEvent(.editingDidEndOnExit)
+                .subscribe(onNext: {
+                    self.titleTextField.hideTextField()
+                })
+                .disposed(by: disposeBag)
+    }
+
+    private func bindCurrencyTextField() {
+        let view = currencyTextField as UIView
+        view.rx
+                .tapGesture()
+                .when(.recognized)
+
+                .subscribe(onNext: { gesture in
+                    if !self.currencyTextField.isActive {
+                        self.currencyTextField.showTextField()
+                    }
+                })
+                .disposed(by: disposeBag)
+
+        currencyTextField.textField.rx
+                .controlEvent(.editingDidEndOnExit)
+                .subscribe(onNext: {
+                    self.currencyTextField.hideTextField()
+                })
+                .disposed(by: disposeBag)
+    }
+
+    private func bindKeyboardDismissGesture() {
+        contentView.rx
+                .tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { recognizer in
+                    if self.currencyTextField.isActive {
+                        self.currencyTextField.hideTextField()
+                    }
+                    if self.titleTextField.isActive {
+                        self.titleTextField.hideTextField()
+                    }
+                })
+                .disposed(by: disposeBag)
+    }
+
+    private func bindCollectionView() {
+        viewModel.usersObservable
+                .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
+                    (_, member: User, cell: AddGroupUserCollectionViewCell) in
+                    cell.userModel = member
+                    cell.rx
+                            .swipeGesture(.left)
+                            .when(.ended)
+                            .subscribe(onNext: { recognizer in
+                                let cell = recognizer.view as! AddGroupUserCollectionViewCell
+                                self.viewModel?.removeUser(user: cell.userModel)
+                            })
+                            .disposed(by: self.swipeBag)
+                }.disposed(by: self.disposeBag)
+    }
+
+    private func bindAddMembersButton() {
+        addMembersButton.rx
+                .tap
+                .subscribe(onNext: {
+                    self.prepareNavigationToAddFriends()
+                })
+                .disposed(by: disposeBag)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViewModel()
+        setupViews()
+        setupLayouts()
+        bindTittleTextField()
+        bindCurrencyTextField()
+        bindKeyboardDismissGesture()
+        bindCollectionView()
+        bindAddMembersButton()
     }
 
     private let identifier = "cellId"
@@ -59,18 +159,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
 
         return btn
     }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupLayouts()
-        bindTittleTextField()
-        bindCurrencyTextField()
-        bindKeyboardDismissGesture()
-        bindCollectionView()
-        bindAddMembersButton()
-        bindSubmitButton()
-    }
 
     private func setupViews() {
         collectionView.backgroundColor = .white
@@ -130,106 +218,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
             maker.top.equalTo(addMembersButton.snp.bottom).offset(8)
             maker.bottom.equalTo(submitButton.snp.top).offset(-8)
         }
-    }
-
-    private func bindTittleTextField() {
-        let view = titleTextField as UIView
-        view.rx
-                .tapGesture()
-                .when(.recognized)
-                .subscribe(onNext: { gesture in
-                    if !self.titleTextField.isActive {
-                        self.titleTextField.showTextField()
-                    }
-                })
-                .disposed(by: disposeBag)
-
-        titleTextField.textField.rx
-                .controlEvent(.editingDidEndOnExit)
-                .subscribe(onNext: {
-                    self.titleTextField.hideTextField()
-                })
-                .disposed(by: disposeBag)
-
-        titleTextField.textField.rx.text
-                                    .orEmpty
-                                    .bind(to: viewModel.titleSet)
-                                    .disposed(by: disposeBag)
-    }
-
-    private func bindCurrencyTextField() {
-        let view = currencyTextField as UIView
-        view.rx
-                .tapGesture()
-                .when(.recognized)
-                .subscribe(onNext: { gesture in
-                    if !self.currencyTextField.isActive {
-                        self.currencyTextField.showTextField()
-                    }
-                })
-                .disposed(by: disposeBag)
-
-        currencyTextField.textField.rx
-                .controlEvent(.editingDidEndOnExit)
-                .subscribe(onNext: {
-                    self.currencyTextField.hideTextField()
-                })
-                .disposed(by: disposeBag)
-
-        currencyTextField.textField.rx.text
-                                    .orEmpty
-                                    .bind(to: viewModel.currencySet)
-                                    .disposed(by: disposeBag)
-    }
-
-    private func bindKeyboardDismissGesture() {
-        contentView.rx
-                .tapGesture()
-                .when(.recognized)
-                .subscribe(onNext: { recognizer in
-                    if self.currencyTextField.isActive {
-                        self.currencyTextField.hideTextField()
-                    }
-                    if self.titleTextField.isActive {
-                        self.titleTextField.hideTextField()
-                    }
-                })
-                .disposed(by: disposeBag)
-    }
-
-    private func bindCollectionView() {
-        viewModel.usersObservable
-                .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
-                    (_, member: User, cell: AddGroupUserCollectionViewCell) in
-                    cell.userModel = member
-                    cell.rx
-                            .swipeGesture(.left)
-                            .when(.ended)
-                            .subscribe(onNext: { recognizer in
-                                let cell = recognizer.view as! AddGroupUserCollectionViewCell
-                                self.viewModel?.removeUser(user: cell.userModel)
-                            })
-                            .disposed(by: self.swipeBag)
-                }.disposed(by: self.disposeBag)
-    }
-
-    private func bindAddMembersButton() {
-        addMembersButton.rx
-                .tap
-                .subscribe(onNext: {
-                    self.prepareNavigationToAddFriends()
-                })
-                .disposed(by: disposeBag)
-    }
-
-    private func bindSubmitButton() {
-        submitButton.rx
-                    .tap
-                    .subscribe(onNext: {
-                        self.viewModel.createGroup(title: self.titleTextField.textField.text!, currency: "PLN")
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                    .disposed(by: disposeBag)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

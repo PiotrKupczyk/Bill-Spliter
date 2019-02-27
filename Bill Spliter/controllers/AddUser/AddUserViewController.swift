@@ -13,7 +13,7 @@ import SnapKit
 
 class AddUserViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 
-    var viewModelFactory: (AddUserViewModelViewModel.Inputs) -> AddUserViewModelViewModel
+    var viewModelFactory: (AddUserViewModelViewModel.UIInputs) -> AddUserViewModelViewModel
             = { _ in fatalError("Must provide factory function first.") }
 
     private let reuseIdentifier = "friendsCell"
@@ -32,7 +32,7 @@ class AddUserViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }
 
     private func setupViewModel() {
-        let inputs = AddUserViewModelViewModel.Inputs(
+        let inputs = AddUserViewModelViewModel.UIInputs(
                 selectUser: collectionView.rx.modelSelected(User.self).asObservable(),
                 deSelectUser: collectionView.rx.modelDeselected(User.self).asObservable(),
                 submitTrigger: submitButton.rx.tap.asObservable(),

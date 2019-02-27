@@ -8,27 +8,47 @@ import RxSwift
 import RxCocoa
 
 class AddGroupViewModel {
+
+    struct UIInputs {
+        let submitTriggered: Observable<Void>
+        let titleTypingTriggered: Observable<String>
+        let currencyTypingTriggered: Observable<String>
+    }
+
+    let bag = DisposeBag()
+
     private let users = BehaviorRelay<[User]>(value: [])
-    private let newGroup = PublishSubject<Group>()
+
+    let title = BehaviorRelay<String>(value: "")
+
+    let currency = BehaviorRelay<String>(value: "")
 
     lazy var usersObservable: Observable<[User]> = {
         return self.users.asObservable()
     }()
 
-    let submitPressed = PublishSubject<Void>()
+    var didSubmit: Observable<Group>!
 
-    let titleSet = PublishSubject<String>()
+    init(inputs: UIInputs) {
+        didSubmit = inputs.submitTriggered
+                .map{
+                    Group(title: self.title.value, imageName: "home-icon", groupBalance: 0)
+                }
 
-    let currencySet = PublishSubject<String>()
+        inputs.titleTypingTriggered
+                .throttle(1, scheduler: MainScheduler.instance)
+                .bind(to: title)
+                .disposed(by: bag)
 
-    init() {
-
+        inputs.currencyTypingTriggered
+                .throttle(1, scheduler: MainScheduler.instance)
+                .bind(to: currency)
+                .disposed(by: bag)
     }
 
     public func createGroup(title: String, currency: String) {
         //here will we api service
         let group = Group(title: title, imageName: "home-icon", groupBalance: 0)
-        newGroup.onNext(group)
     }
 
     public func updateUsers(with newUsers: [User]) {

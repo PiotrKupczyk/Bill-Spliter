@@ -28,71 +28,37 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
     
     let plusButton = UIButton()
     let tableView = UITableView()
-    
-    private func setupView() {
-        plusButton.setImage(UIImage(named: "plus-icon"), for: .normal)
-        view.backgroundColor = .white
-        self.tableView.separatorColor = .clear
-        tableView.backgroundColor = .white
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        plusButton.rx
-                .tap
-                .subscribe(onNext: {
-                    self.prepareNavigationToAddGroup()
-                })
-                .disposed(by: disposeBag)
-    }
 
     private func prepareNavigationToAddGroup() {
-        let groupViewModel = AddGroupViewModel()
-        let vc = AddGroupViewController(viewModel: groupViewModel)
+        let addGroupVC = AddGroupViewController()
+        addGroupVC.viewModelFactory = { inputs in
+            let groupViewModel = AddGroupViewModel(inputs: inputs)
+            groupViewModel.didSubmit
+                            .subscribe(onNext: { group in
+                                self.viewModel.addGroup(group: group)
+                                self.navigationController?.popViewController(animated: true)
+                            })
+                            .disposed(by: groupViewModel.bag)
+            return groupViewModel
+        }
 
-//        vc.viewModel.groupObservable
-//                    .subscribe { group in
-//                        self.viewModel.addGroup(group: group.element!)
-//                    }.disposed(by: self.disposeBag)
-        vc.title = "Add group"
-        self.navigationController?.pushViewController(vc, animated: true)
+        addGroupVC.title = "Add group"
+
+        self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
 
-    private func setupLayouts() {
-        view.addSubview(plusButton)
-        plusButton.snp.makeConstraints { maker in
-            maker.centerX.equalToSuperview()
-            maker.height.equalTo(64)
-            maker.width.equalTo(64)
-            maker.bottom.equalTo(view.snp.bottomMargin).inset(8)
-        }
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(view.snp.topMargin)
-            maker.trailing.equalTo(view.snp.trailing)
-            maker.leading.equalTo(view.snp.leading)
-            maker.bottom.equalTo(plusButton.snp.top).inset(-8)
-//            maker.bottom.equalTo(view.snp.bottomMargin)
-        }
-    }
+
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
     private func addPlusButton() {
-//        view.addSubview(plusButton)
         tableView.addSubview(plusButton)
-//        plusButton.backgroundColor = .red
         plusButton.superview?.bringSubviewToFront(plusButton)
-//        plusButton.layer.zPosition = 99999
-//        parent?.view.bringSubviewToFront(plusButton)
+        //TODO fix button position
         plusButton.frame = CGRect(origin: CGPoint(x: 161, y: 591), size: CGSize(width: 54, height: 54))
         plusButton.setImage(UIImage(named: "plusButton"), for: .normal)
-//        plusButton.snp.makeConstraints { (maker) in
-//            maker.centerX.equalTo(view.snp.centerX)
-////            maker.bottom.equalTo(view.snp.bottom).inset(22)
-//            maker.width.equalTo(54)
-//            maker.height.equalTo(54)
-//        }
-        
     }
 
     private func bindTableView() {
@@ -112,5 +78,37 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
                 fatalError()
             }
         }).disposed(by: disposeBag)
+    }
+
+    private func setupView() {
+        plusButton.setImage(UIImage(named: "plus-icon"), for: .normal)
+        view.backgroundColor = .white
+        self.tableView.separatorColor = .clear
+        tableView.backgroundColor = .white
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        plusButton.rx
+                .tap
+                .subscribe(onNext: {
+                    self.prepareNavigationToAddGroup()
+                })
+                .disposed(by: disposeBag)
+    }
+
+    private func setupLayouts() {
+        view.addSubview(plusButton)
+        plusButton.snp.makeConstraints { maker in
+            maker.centerX.equalToSuperview()
+            maker.height.equalTo(64)
+            maker.width.equalTo(64)
+            maker.bottom.equalTo(view.snp.bottomMargin).inset(8)
+        }
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(view.snp.topMargin)
+            maker.trailing.equalTo(view.snp.trailing)
+            maker.leading.equalTo(view.snp.leading)
+            maker.bottom.equalTo(plusButton.snp.top).inset(-8)
+//            maker.bottom.equalTo(view.snp.bottomMargin)
+        }
     }
 }
