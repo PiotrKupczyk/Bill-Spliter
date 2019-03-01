@@ -52,51 +52,56 @@ class FancyTextField: UIView {
     }
 
     public func showTextField() {
-        self.addSubview(self.textField)
-        self.textField.snp.makeConstraints { maker in
-            maker.top.equalTo(self.placeholderLabel.snp.bottom).inset(4)
-            maker.leading.equalToSuperview().inset(4)
-            maker.trailing.equalToSuperview()
-            maker.bottom.equalTo(self.underlineView.snp.top)
-        }
+        if !self.isActive {
+            self.addSubview(self.textField)
+            self.textField.snp.makeConstraints { maker in
+                maker.top.equalTo(self.placeholderLabel.snp.bottom).inset(4)
+                maker.leading.equalToSuperview().inset(4)
+                maker.trailing.equalToSuperview()
+                maker.bottom.equalTo(self.underlineView.snp.top)
+            }
 //        let currentFrame = placeholderLabel.frame
 //        let newFrame = CGRect(origin: CGPoint(x: currentFrame.origin.x, y: currentFrame.origin.y-18), size: <#T##CGSize##CoreGraphics.CGSize#>)
-        self.bottomConstraint?.deactivate()
-        self.setNeedsUpdateConstraints()
-
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-            self.placeholderLabel.textColor = UIColor.coolBlue
-            self.underlineView.backgroundColor = UIColor.coolBlue
-            self.placeholderLabel.font = UIFont.appFont(ofSize: 13, weight: .regular)
-            self.layoutIfNeeded()
-        })
-        self.isActive = !self.isActive
-        textField.becomeFirstResponder()
-    }
-    //TODO: add animations to font
-    public func hideTextField() {
-        if ((self.textField.text?.isEmpty)!) {
-            self.isActive = !self.isActive
-            bottomConstraint?.activate()
-            textField.removeFromSuperview()
+            self.bottomConstraint?.deactivate()
             self.setNeedsUpdateConstraints()
 
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-                self.placeholderLabel.textColor = UIColor.textLightGray
-                self.underlineView.backgroundColor = UIColor.textLightGray
-                self.placeholderLabel.transform = self.placeholderLabel.transform.inverted()
+                self.placeholderLabel.textColor = UIColor.coolBlue
+                self.underlineView.backgroundColor = UIColor.coolBlue
+                self.placeholderLabel.font = UIFont.appFont(ofSize: 13, weight: .regular)
                 self.layoutIfNeeded()
-            }, completion: {
-                _ in
-                self.placeholderLabel.font = UIFont.appFont(ofSize: 17, weight: .regular)
             })
-
-        } else {
-            self.placeholderLabel.textColor = .black
-            self.underlineView.backgroundColor = .black
-            self.textField.textColor = .black
+            self.isActive = true
+            textField.becomeFirstResponder()
         }
-        textField.resignFirstResponder()
+    }
+
+    //TODO: add animations to font
+    public func hideTextField() {
+        if self.isActive {
+            if ((self.textField.text?.isEmpty)!) {
+                self.isActive = false
+                bottomConstraint?.activate()
+                textField.removeFromSuperview()
+                self.setNeedsUpdateConstraints()
+
+                UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                    self.placeholderLabel.textColor = UIColor.textLightGray
+                    self.underlineView.backgroundColor = UIColor.textLightGray
+                    self.placeholderLabel.transform = self.placeholderLabel.transform.inverted()
+                    self.layoutIfNeeded()
+                }, completion: {
+                    _ in
+                    self.placeholderLabel.font = UIFont.appFont(ofSize: 17, weight: .regular)
+                })
+
+            } else {
+                self.placeholderLabel.textColor = .black
+                self.underlineView.backgroundColor = .black
+                self.textField.textColor = .black
+            }
+            textField.resignFirstResponder()
+        }
     }
 
     init(placeholder: String) {

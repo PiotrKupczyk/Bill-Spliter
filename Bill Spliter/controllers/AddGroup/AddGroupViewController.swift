@@ -52,7 +52,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         view.rx
                 .tapGesture()
                 .when(.recognized)
-
                 .subscribe(onNext: { gesture in
                     if !self.currencyTextField.isActive {
                         self.currencyTextField.showTextField()
@@ -72,13 +71,9 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         contentView.rx
                 .tapGesture()
                 .when(.recognized)
-                .subscribe(onNext: { recognizer in
-                    if self.currencyTextField.isActive {
-                        self.currencyTextField.hideTextField()
-                    }
-                    if self.titleTextField.isActive {
-                        self.titleTextField.hideTextField()
-                    }
+                .subscribe(onNext: { _ in
+                    self.currencyTextField.hideTextField()
+                    self.titleTextField.hideTextField()
                 })
                 .disposed(by: disposeBag)
     }
@@ -94,6 +89,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
                             .subscribe(onNext: { recognizer in
                                 let cell = recognizer.view as! AddGroupUserCollectionViewCell
                                 self.viewModel?.removeUser(user: cell.userModel)
+                                self.swipeBag = DisposeBag()
                             })
                             .disposed(by: self.swipeBag)
                 }.disposed(by: self.disposeBag)

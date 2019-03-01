@@ -12,12 +12,21 @@ import RxSwift
 import SnapKit
 
 class GroupsTableViewController: UIViewController, UITableViewDelegate {
+    var viewModelFactory: (GroupViewModel.UIInputs) -> GroupViewModel
+            = { _ in fatalError("Must provide factory function first.") }
+
     private let reuseIdentifier = "GroupsCell"
-    let viewModel = GroupViewModel()
-    let disposeBag = DisposeBag()
+    private var viewModel: GroupViewModel!
+    let bag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        let inputs = GroupViewModel.UIInputs(
+                groupSelected: tableView.rx.modelSelected(Group.self).asObservable()
+        )
+
+        viewModel = viewModelFactory(inputs)
+
         tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         setupView()
         setupLayouts()
@@ -25,7 +34,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 
         viewModel.fetchData()
     }
-    
+
     let plusButton = UIButton()
     let tableView = UITableView()
 
@@ -52,7 +61,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
+
     private func addPlusButton() {
         tableView.addSubview(plusButton)
         plusButton.superview?.bringSubviewToFront(plusButton)
@@ -62,22 +71,18 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
     }
 
     private func bindTableView() {
-        viewModel.dataSource.bind(to: tableView.rx.items(cellIdentifier: reuseIdentifier)) {
+        viewModel.groups.bind(to: tableView.rx.items(cellIdentifier: reuseIdentifier)) {
             (_, group: Group, cell: GroupsTableViewCell) in
             cell.groupModel = group
-        }.disposed(by: disposeBag)
+        }.disposed(by: bag)
 
-        tableView.rx.itemSelected.subscribe(onNext: {
-            (indexPath) in
-            do {
-                let group = try self.viewModel.dataSource.value()[indexPath.row]
-                let vc = GroupBillsViewController()
-                vc.title = "\(group.title) bills"
-                self.navigationController?.pushViewController(vc, animated: true)
-            } catch {
-                fatalError()
-            }
-        }).disposed(by: disposeBag)
+        tableView.rx.modelSelected(Group.self)
+                    .subscribe(onNext: { group in
+                        let vc = GroupBillsViewController()
+                        vc.title = "\(group.title) bills"
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    })
+                    .disposed(by: bag)
     }
 
     private func setupView() {
@@ -85,13 +90,13 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         view.backgroundColor = .white
         self.tableView.separatorColor = .clear
         tableView.backgroundColor = .white
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        tableView.rx.setDelegate(self).disposed(by: bag)
         plusButton.rx
                 .tap
                 .subscribe(onNext: {
                     self.prepareNavigationToAddGroup()
                 })
-                .disposed(by: disposeBag)
+                .disposed(by: bag)
     }
 
     private func setupLayouts() {

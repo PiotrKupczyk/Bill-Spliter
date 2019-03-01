@@ -8,11 +8,24 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class GroupViewModel {
-    public let dataSource = BehaviorSubject<[Group]>(value: [Group]())
-    private var groups = [Group]()
-    init() {}
+
+    struct UIInputs {
+        let groupSelected: Observable<Group>
+    }
+
+    public let groups = BehaviorRelay<[Group]>(value: [])
+    public var navigateToGroupBillsTriggered: Observable<GroupBillsViewController>!
+
+    init(inputs: UIInputs) {
+        navigateToGroupBillsTriggered = inputs.groupSelected
+                                                .map { group -> GroupBillsViewController in
+                                                let vc = GroupBillsViewController()
+                                                vc.viewModel = vc.view
+                                        }
+    }
     
     public func fetchData() {
         let groupOne = Group(title: "Amazing party", imageName: "home-icon", groupBalance: 123.98)
@@ -20,11 +33,12 @@ class GroupViewModel {
         groups.append(groupOne)
         groups.append(groupTwo)
 
-        dataSource.onNext(groups)
+        groups.onNext(groups)
     }
 
     public func addGroup(group: Group) {
-        groups.append(group)
-        dataSource.onNext(groups)
+        groups.acceptAppending(group)
+//        groups.append(group)
+//        groups.onNext(groups)
     }
 }

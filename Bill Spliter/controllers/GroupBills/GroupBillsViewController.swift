@@ -12,7 +12,7 @@ import RxCocoa
 import SnapKit
 
 class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
-    private let resuseIdentifier = "cellId"
+    private let resusedIdentifier = "cellId"
     let viewModel = GroupBillsViewModel()
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     func setupViews() {
-        collectionView.register(GroupBillsCollectionViewCell.self, forCellWithReuseIdentifier: resuseIdentifier)
+        collectionView.register(GroupBillsCollectionViewCell.self, forCellWithReuseIdentifier: resusedIdentifier)
         collectionView.backgroundColor = .white
         view.backgroundColor = .white
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -45,7 +45,7 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
     }
     
     private func bindCollectionView() {
-        viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: resuseIdentifier)) {
+        viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: resusedIdentifier)) {
             (_, bill: Bill, cell: GroupBillsCollectionViewCell) in
             cell.billModel = bill
         }.disposed(by: disposeBag)
