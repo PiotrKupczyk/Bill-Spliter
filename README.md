@@ -1,6 +1,8 @@
 # Bill Spliter
 Application to share bills across group and sugest how to divide it.
-Users can create accounts, add friends, groups and bills. 
+Users can create accounts, add friends, groups and bills.
+
+<img src="https://raw.githubusercontent.com/PiotrKupczyk/Bill.Spliter/master/Screens/GropAddFilled.png" width="250" height="425"> <img src="https://raw.githubusercontent.com/PiotrKupczyk/Bill.Spliter/master/Screens/FriendsList.png" width="250" height="425"> <img src="https://raw.githubusercontent.com/PiotrKupczyk/Bill.Spliter/master/Screens/BillsList.png" width="250" height="425">
 
 ## Built With
 
