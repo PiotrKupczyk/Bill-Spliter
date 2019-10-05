@@ -7,6 +7,7 @@ target 'Bill Spliter' do
 
   # Pods for Bill Spliter
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
   pod 'SnapKit', '~> 4.0.0'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
