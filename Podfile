@@ -11,6 +11,7 @@ target 'Bill Spliter' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'Kingfisher', '~> 4.0'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
   pod "RxGesture"
 
   target 'Bill SpliterTests' do

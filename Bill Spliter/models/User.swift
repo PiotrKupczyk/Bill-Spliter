@@ -17,6 +17,7 @@ class User {
         self.image = imageURL
         self._name = name
         _id = id
+
     }
 }
 extension User {
