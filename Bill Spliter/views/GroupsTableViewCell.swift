@@ -12,9 +12,13 @@ import SnapKit
 class GroupsTableViewCell: UITableViewCell {
     var groupModel: Group! {
         didSet {
-            iconImageView.image = UIImage(named: groupModel.imageName)
-            titleLabel.text = groupModel.title
-            balanceLabel.text = groupModel.groupBalance
+            if let imageURL = URL(string: groupModel.imageURL ?? "") {
+                iconImageView.kf.setImage(with: imageURL)
+            } else {
+                iconImageView.image = UIImage(named: "home-icon")
+            }
+            titleLabel.text = groupModel.name
+            balanceLabel.text = "0zł"
             setupLayouts()
             setupViews()
         }

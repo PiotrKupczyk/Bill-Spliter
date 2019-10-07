@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B4F184C40697E4B90EBB532671FB289"
+               BlueprintIdentifier = "71B99724912BB5226A9671A03B8839A3"
                BuildableName = "Pods_Bill_Spliter.framework"
                BlueprintName = "Pods-Bill Spliter"
                ReferencedContainer = "container:Pods.xcodeproj">

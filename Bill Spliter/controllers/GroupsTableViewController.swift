@@ -34,16 +34,14 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         addGroupVC.viewModelFactory = { inputs in
             let groupViewModel = AddGroupViewModel(inputs: inputs)
             groupViewModel.didSubmit
-                            .subscribe(onNext: { group in
-                                self.viewModel.addGroup(group: group)
+                            .subscribe(onNext: {
+                                self.viewModel.fetchData()
                                 self.navigationController?.popViewController(animated: true)
                             })
                             .disposed(by: groupViewModel.bag)
             return groupViewModel
         }
-
         addGroupVC.title = "Add group"
-
         self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
 
@@ -72,7 +70,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             do {
                 let group = try self.viewModel.dataSource.value()[indexPath.row]
                 let vc = GroupBillsViewController()
-                vc.title = "\(group.title) bills"
+                vc.title = "\(group.name) bills"
                 self.navigationController?.pushViewController(vc, animated: true)
             } catch {
                 fatalError()

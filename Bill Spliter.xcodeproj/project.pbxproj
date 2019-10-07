@@ -24,6 +24,7 @@
 		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
 		B6E0E0900473EA51C885C570 /* KeyboardFriendlyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */; };
 		B6E0E16E27F5026055366504 /* GroupBillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8582281EEA4A71644C2 /* GroupBillsCollectionViewCell.swift */; };
+		B6E0E1A65FFBF5B18D61F846 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E73A1D6B102BFDECE539 /* GroupService.swift */; };
 		B6E0E1B6485A0A6EE421402D /* AddUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EE927C3B0B2E309EE876 /* AddUserCollectionViewCell.swift */; };
 		B6E0E33C2C4373FE52F85703 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EFAD1872764D8C98970E /* AddUserViewController.swift */; };
 		B6E0E37B2E752EDBBC94C7A4 /* GroupBillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED8A69C4F7F7797E7B20 /* GroupBillsViewController.swift */; };
@@ -35,6 +36,7 @@
 		B6E0E8F300B6A6191E6559B3 /* GroupBillsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9DBCC9C7D90F5D74B67 /* GroupBillsViewModel.swift */; };
 		B6E0E944C614BFB0BCE8D3E4 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED020A48C5997EAAD84D /* AddGroupViewController.swift */; };
 		B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */; };
+		B6E0EAD9EB0B199EAD720AA2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E3BE9EC832691ECAD98D /* Const.swift */; };
 		B6E0EBE424C9AD34406F92A6 /* AddGroupUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9B71E89DCE54A0490C4 /* AddGroupUserCollectionViewCell.swift */; };
 		B6E0EEE74E8FA30CC5740250 /* BehaviorRelay.swift in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */; };
 /* End PBXBuildFile section */
@@ -72,7 +74,9 @@
 		89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_SpliterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E0E3BE9EC832691ECAD98D /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.swift; sourceTree = "<group>"; };
+		B6E0E73A1D6B102BFDECE539 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
 		B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		B6E0E8582281EEA4A71644C2 /* GroupBillsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E8D35368B6F0A6096A90 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				832517A62210715C00BDB198 /* extensions */,
+				B6E0E3BE9EC832691ECAD98D /* Const.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				8336790E221052D000331E5D /* views */,
 				8336790D221052BB00331E5D /* models */,
 				833678F62210529300331E5D /* LaunchScreen.storyboard */,
+				B6E0E0714D20C8DD011DEE0B /* services */,
 			);
 			path = "Bill Spliter";
 			sourceTree = "<group>";
@@ -221,6 +227,14 @@
 				833678F92210529300331E5D /* Info.plist */,
 			);
 			path = "project-files";
+			sourceTree = "<group>";
+		};
+		B6E0E0714D20C8DD011DEE0B /* services */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0E73A1D6B102BFDECE539 /* GroupService.swift */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 		B6E0E6FDFAD69EEF69012DD5 /* GroupBills */ = {
@@ -382,22 +396,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,6 +489,8 @@
 				B6E0E16E27F5026055366504 /* GroupBillsCollectionViewCell.swift in Sources */,
 				B6E0EBE424C9AD34406F92A6 /* AddGroupUserCollectionViewCell.swift in Sources */,
 				B6E0E4358104FF6924E682F9 /* MainTabBarController.swift in Sources */,
+				B6E0EAD9EB0B199EAD720AA2 /* Const.swift in Sources */,
+				B6E0E1A65FFBF5B18D61F846 /* GroupService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

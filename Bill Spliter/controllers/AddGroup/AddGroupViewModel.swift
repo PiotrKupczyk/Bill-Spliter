@@ -23,17 +23,21 @@ class AddGroupViewModel {
 
     let currency = BehaviorRelay<String>(value: "")
 
+    var newGroup: Group? = nil
+
     lazy var usersObservable: Observable<[User]> = {
         return self.users.asObservable()
     }()
 
-    var didSubmit: Observable<Group>!
+    var didSubmit: Observable<Void>!
 
     init(inputs: UIInputs) {
-        didSubmit = inputs.submitTriggered
-                .map{
-                    Group(title: self.title.value, imageName: "home-icon", groupBalance: 0)
-                }
+//        Group(title: self.title.value, imageName: "home-icon", groupBalance: 0)
+        didSubmit = inputs.submitTriggered.map {
+            GroupService.createGroup(name: self.title.value) { group in
+                self.newGroup = group
+            }
+        }
 
         inputs.titleTypingTriggered
                 .throttle(1, scheduler: MainScheduler.instance)
@@ -48,7 +52,7 @@ class AddGroupViewModel {
 
     public func createGroup(title: String, currency: String) {
         //here will we api service
-        let group = Group(title: title, imageName: "home-icon", groupBalance: 0)
+//        let group = Group(title: title, imageName: "home-icon", groupBalance: 0)
     }
 
     public func updateUsers(with newUsers: [User]) {
@@ -56,7 +60,7 @@ class AddGroupViewModel {
     }
 
     public func addUser(user: User) {
-        if !users.value.contains(where: { $0.id == user.id}) {
+        if !users.value.contains(where: { $0.id == user.id }) {
             users.acceptAppending(user)
         }
     }
@@ -64,7 +68,9 @@ class AddGroupViewModel {
     public func removeUser(user: User) {
         print("Removing... \(user.name)")
         //proper filtration will be implemented later
-        users.accept(users.value.filter { $0.id != user.id })
+        users.accept(users.value.filter {
+            $0.id != user.id
+        })
     }
 
     public func removeAllUsers() {
