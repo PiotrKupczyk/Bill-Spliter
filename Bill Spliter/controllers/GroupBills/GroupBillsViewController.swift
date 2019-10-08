@@ -13,8 +13,9 @@ import SnapKit
 
 class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     private let resuseIdentifier = "cellId"
-    let viewModel = GroupBillsViewModel()
+    let viewModel: GroupBillsViewModel
     let disposeBag = DisposeBag()
+    let group: Group
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -23,7 +24,18 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
         viewModel.fetchData()
         // Do any additional setup after loading the view.
     }
-    
+
+    init(group: Group) {
+        self.group = group
+        viewModel = GroupBillsViewModel(group: group)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     func setupViews() {
@@ -46,7 +58,7 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     private func bindCollectionView() {
         viewModel.dataSource.bind(to: collectionView.rx.items(cellIdentifier: resuseIdentifier)) {
-            (_, bill: Bill, cell: GroupBillsCollectionViewCell) in
+            (_, bill: Spend, cell: GroupBillsCollectionViewCell) in
             cell.billModel = bill
         }.disposed(by: disposeBag)
     }

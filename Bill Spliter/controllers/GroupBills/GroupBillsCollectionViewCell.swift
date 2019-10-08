@@ -11,17 +11,17 @@ import SnapKit
 import Kingfisher
 
 class GroupBillsCollectionViewCell: UICollectionViewCell {
-    var billModel: Bill! {
+    var billModel: Spend! {
         didSet {
-            imageView.kf.setImage(with: billModel.imageURL)
-            titleLabel.text = billModel.tittle
-            hourLabel.text = "19:52"
-            nameLabel.text = billModel.name
-            priceLabel.text = billModel.price
+            imageView.kf.setImage(with: URL(string: billModel.imageURL) ?? Const.DEFAULT_IMAGE_URL )
+            titleLabel.text = billModel.title
+            hourLabel.text = "\(billModel.date)"
+            priceLabel.text = "\(billModel.value)"
+            nameLabel.text = billModel.payer
             setupLayouts()
         }
     }
-    
+
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.cornerRadius = 64/2

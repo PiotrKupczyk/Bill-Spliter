@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class User {
+class User : Decodable, Encodable {
     private let _id: String
     private let image: String
     private let _name: String

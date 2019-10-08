@@ -69,7 +69,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             (indexPath) in
             do {
                 let group = try self.viewModel.dataSource.value()[indexPath.row]
-                let vc = GroupBillsViewController()
+                let vc = GroupBillsViewController(group: group)
                 vc.title = "\(group.name) bills"
                 self.navigationController?.pushViewController(vc, animated: true)
             } catch {

@@ -22,12 +22,11 @@ struct GroupService {
     }
 
     static func createGroup(name: String, completion: @escaping (Group?) -> Void) {
-        let CURRENT_USER_ID = ""
         let DEFAULT_GROUP_IMAGE_URL = "https://www.countryflags.io/es/flat/64.png"
         let parameters: [String: Any] = [
             "name": name,
             "imageURL": DEFAULT_GROUP_IMAGE_URL,
-            "membersIds": [CURRENT_USER_ID]
+            "membersIds": [Const.USER_ID]
         ]
         Alamofire.request(
                 "\(Const.API_PATH)/group",

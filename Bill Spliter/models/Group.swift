@@ -16,7 +16,6 @@ struct Group: Codable {
 }
 
 struct Member: Codable {
-    let spends: [String]
+    let spends: [Spend]
     let userId: String
-
 }

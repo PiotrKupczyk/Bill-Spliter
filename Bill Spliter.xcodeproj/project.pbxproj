@@ -33,6 +33,7 @@
 		B6E0E43B50AD33F2DE3FAB28 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9DA925FD230C1737731 /* AddUserViewModel.swift */; };
 		B6E0E60E87C6223E6AA78BF1 /* AddUserSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EA6E614E89C143E7607A /* AddUserSearchBarView.swift */; };
 		B6E0E8AB20EA4FF8570969EE /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8D35368B6F0A6096A90 /* AddGroupViewModel.swift */; };
+		B6E0E8C446769243E7A29F69 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDD0EFDA062AF20209DD /* UserService.swift */; };
 		B6E0E8F300B6A6191E6559B3 /* GroupBillsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9DBCC9C7D90F5D74B67 /* GroupBillsViewModel.swift */; };
 		B6E0E944C614BFB0BCE8D3E4 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED020A48C5997EAAD84D /* AddGroupViewController.swift */; };
 		B6E0E99DD5B469A95413BDC4 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */; };
@@ -88,6 +89,7 @@
 		B6E0ED3AA1D0595F4236BDFF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B6E0ED8A69C4F7F7797E7B20 /* GroupBillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewController.swift; sourceTree = "<group>"; };
 		B6E0EDBCC38AD0B85A170239 /* KeyboardFriendlyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFriendlyVC.swift; sourceTree = "<group>"; };
+		B6E0EDD0EFDA062AF20209DD /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B6E0EDFF7DF38A33DA0E1702 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		B6E0EE927C3B0B2E309EE876 /* AddUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0EFAD1872764D8C98970E /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E0E73A1D6B102BFDECE539 /* GroupService.swift */,
+				B6E0EDD0EFDA062AF20209DD /* UserService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				B6E0E4358104FF6924E682F9 /* MainTabBarController.swift in Sources */,
 				B6E0EAD9EB0B199EAD720AA2 /* Const.swift in Sources */,
 				B6E0E1A65FFBF5B18D61F846 /* GroupService.swift in Sources */,
+				B6E0E8C446769243E7A29F69 /* UserService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
