@@ -24,7 +24,6 @@ class KeyboardFriendlyVC: UIViewController {
     }
 
 
-
     private func setupLayouts() {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { maker in
@@ -43,8 +42,12 @@ class KeyboardFriendlyVC: UIViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
-        guard let animationCurve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+        guard let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+            return
+        }
+        guard let animationCurve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {
+            return
+        }
         print(animationDuration)
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.size.height == defaultHeight {
@@ -60,13 +63,4 @@ class KeyboardFriendlyVC: UIViewController {
             self.view.frame.size.height = defaultHeight
         }
     }
-
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
 }

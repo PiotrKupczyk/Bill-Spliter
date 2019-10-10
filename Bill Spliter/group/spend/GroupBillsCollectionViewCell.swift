@@ -13,11 +13,11 @@ import Kingfisher
 class GroupBillsCollectionViewCell: UICollectionViewCell {
     var billModel: Spend! {
         didSet {
-            imageView.kf.setImage(with: URL(string: billModel.imageURL) ?? Const.DEFAULT_IMAGE_URL )
+            imageView.kf.setImage(with: URL(string: billModel.imageURL))
             titleLabel.text = billModel.title
             hourLabel.text = "\(billModel.date)"
             priceLabel.text = "\(billModel.value)"
-            nameLabel.text = billModel.payer
+            nameLabel.text = "For now nobody"
             setupLayouts()
         }
     }

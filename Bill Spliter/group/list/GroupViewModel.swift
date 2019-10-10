@@ -11,9 +11,10 @@ import RxSwift
 import Alamofire
 import Alamofire_SwiftyJSON
 import SwiftyJSON
+import RxCocoa
 
 class GroupViewModel {
-    public let dataSource = BehaviorSubject<[Group]>(value: [Group]())
+    public let dataSource = BehaviorRelay<[Group]>(value: [Group]())
     private var groups = [Group]()
 
     init() {
@@ -21,13 +22,14 @@ class GroupViewModel {
 
     public func fetchData() {
         GroupService.getGroups { groups in
-            self.dataSource.onNext(groups)
+            print("Fetching groups \(groups)")
+            self.dataSource.accept(groups)
         }
     }
 
-    public func addGroup(group: Group) {
+    public func appendGroup(group: Group) {
         groups.append(group)
-        dataSource.onNext(groups)
+        dataSource.acceptAppending(group)
     }
 
     private func calculateBalance() -> Double {

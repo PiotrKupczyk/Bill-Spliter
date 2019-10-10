@@ -23,7 +23,7 @@ class AddGroupViewModel {
 
     let currency = BehaviorRelay<String>(value: "")
 
-    var newGroup: Group? = nil
+    let didGroupCreated = BehaviorRelay<Group?>(value: nil)
 
     lazy var usersObservable: Observable<[User]> = {
         return self.users.asObservable()
@@ -32,11 +32,11 @@ class AddGroupViewModel {
     var didSubmit: Observable<Void>!
 
     init(inputs: UIInputs) {
-//        Group(title: self.title.value, imageName: "home-icon", groupBalance: 0)
         didSubmit = inputs.submitTriggered.map {
-            GroupService.createGroup(name: self.title.value) { group in
-                self.newGroup = group
-            }
+            self.createGroup(
+                    title: self.title.value,
+                    usersIds: self.users.value.map { $0.id }
+            )
         }
 
         inputs.titleTypingTriggered
@@ -50,9 +50,15 @@ class AddGroupViewModel {
                 .disposed(by: bag)
     }
 
-    public func createGroup(title: String, currency: String) {
-        //here will we api service
-//        let group = Group(title: title, imageName: "home-icon", groupBalance: 0)
+    private func createGroup(title: String, usersIds: [String]) {
+        GroupService.createGroup(name: title, usersIds: usersIds) { group in
+            guard let createdGroup: Group = group else {
+                print("Error fetching group /POST create group ");
+                return
+            }
+            print("Created group [\(createdGroup)]")
+            self.didGroupCreated.accept(createdGroup)
+        }
     }
 
     public func updateUsers(with newUsers: [User]) {

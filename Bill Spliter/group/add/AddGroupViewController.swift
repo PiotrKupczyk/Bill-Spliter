@@ -12,17 +12,19 @@ import SnapKit
 
 class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
     var viewModelFactory: (AddGroupViewModel.UIInputs) -> AddGroupViewModel
-            = { _ in fatalError("Must provide factory function first.") }
+            = { _ in
+        fatalError("Must provide factory function first.")
+    }
 
-    private var viewModel: AddGroupViewModel!
+    var viewModel: AddGroupViewModel!
     let disposeBag = DisposeBag()
     var swipeBag = DisposeBag()
 
     private func setupViewModel() {
         let inputs = AddGroupViewModel.UIInputs(
-            submitTriggered: submitButton.rx.tap.asObservable(),
-            titleTypingTriggered: titleTextField.textField.rx.text.orEmpty.asObservable(),
-            currencyTypingTriggered: currencyTextField.textField.rx.text.orEmpty.asObservable()
+                submitTriggered: submitButton.rx.tap.asObservable(),
+                titleTypingTriggered: titleTextField.textField.rx.text.orEmpty.asObservable(),
+                currencyTypingTriggered: currencyTextField.textField.rx.text.orEmpty.asObservable()
         )
         viewModel = viewModelFactory(inputs)
     }
@@ -52,7 +54,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         view.rx
                 .tapGesture()
                 .when(.recognized)
-
                 .subscribe(onNext: { gesture in
                     if !self.currencyTextField.isActive {
                         self.currencyTextField.showTextField()
@@ -130,6 +131,7 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         l.text = "Friends"
         return l
     }()
+
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     let addMembersButton: UIButton = {
@@ -239,9 +241,6 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
             self.viewModel.usersObservable
                     .bind(to: addUserViewModel.selectedUsers)
                     .disposed(by: addUserViewModel.bag)
-//            addUserViewModel.selectedUsers
-//                            .bind(to: self.viewModel.users)
-//                            .disposed(by: addUserVC.disposeBag)
             return addUserViewModel
         }
 

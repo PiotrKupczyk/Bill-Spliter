@@ -11,8 +11,9 @@ import Kingfisher
 class AddGroupUserCollectionViewCell: UICollectionViewCell {
     var userModel: User! {
         didSet {
+            guard let imageURL = URL(string: userModel.imageURL) else { return }
             nameLabel.text = userModel.name
-            profileImageView.kf.setImage(with: userModel.imageURL)
+            profileImageView.kf.setImage(with: imageURL)
         }
     }
     let profileImageView: UIImageView = {
@@ -30,7 +31,6 @@ class AddGroupUserCollectionViewCell: UICollectionViewCell {
     }()
     //TODO fix streched image
     override func layoutSubviews() {
-        super.layoutSubviews()
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { maker in
             maker.leading.top.equalToSuperview().offset(4)

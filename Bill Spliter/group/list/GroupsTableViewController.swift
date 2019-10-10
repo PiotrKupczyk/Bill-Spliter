@@ -11,13 +11,20 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
+extension GroupsTableViewController {
+    func createGroup(_ group: Group) {
+        viewModel.appendGroup(group: group)
+    }
+}
+
 class GroupsTableViewController: UIViewController, UITableViewDelegate {
     private let reuseIdentifier = "GroupsCell"
     let viewModel = GroupViewModel()
     let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         setupView()
         setupLayouts()
@@ -25,7 +32,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 
         viewModel.fetchData()
     }
-    
+
     let plusButton = UIButton()
     let tableView = UITableView()
 
@@ -34,11 +41,16 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         addGroupVC.viewModelFactory = { inputs in
             let groupViewModel = AddGroupViewModel(inputs: inputs)
             groupViewModel.didSubmit
-                            .subscribe(onNext: {
-                                self.viewModel.fetchData()
-                                self.navigationController?.popViewController(animated: true)
-                            })
-                            .disposed(by: groupViewModel.bag)
+                    .subscribe(onNext: {
+                        print("Submitted group creation")
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                    .disposed(by: groupViewModel.bag)
+            groupViewModel.didGroupCreated
+                    .subscribe(onNext: { group in
+                        guard let safeGroup = group else { return }
+                        self.viewModel.appendGroup(group: safeGroup)
+                    }).disposed(by: groupViewModel.bag)
             return groupViewModel
         }
         addGroupVC.title = "Add group"
@@ -46,11 +58,10 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
     }
 
 
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
+
     private func addPlusButton() {
         tableView.addSubview(plusButton)
         plusButton.superview?.bringSubviewToFront(plusButton)
@@ -67,14 +78,10 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 
         tableView.rx.itemSelected.subscribe(onNext: {
             (indexPath) in
-            do {
-                let group = try self.viewModel.dataSource.value()[indexPath.row]
+                let group = self.viewModel.dataSource.value[indexPath.row]
                 let vc = GroupBillsViewController(group: group)
                 vc.title = "\(group.name) bills"
                 self.navigationController?.pushViewController(vc, animated: true)
-            } catch {
-                fatalError()
-            }
         }).disposed(by: disposeBag)
     }
 

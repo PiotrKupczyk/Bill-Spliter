@@ -25,7 +25,8 @@ class AddUserCollectionViewCell: UICollectionViewCell {
 
     var userModel: User! {
         didSet {
-            profileImageView.kf.setImage(with: userModel.imageURL)
+            guard let imageURL = URL(string: userModel.imageURL) else { return }
+            profileImageView.kf.setImage(with: imageURL)
             nameLabel.text = userModel.name
             setupLayouts()
         }

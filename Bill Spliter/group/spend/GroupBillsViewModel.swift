@@ -19,10 +19,10 @@ class GroupBillsViewModel {
 
     public func fetchData() {
 //        let bill = Bill(imageURL: "https://ui-avatars.com/api/?name=Weronika+Relich&size=64&color=FFFFF&background=007AFF", tittle: "Pizza i cola", createdDate: 123142, name: "Werka", price: 36.12)
-        let bills = group.members?
+        let spends = group.members?
                 .flatMap { member in
                     member.spends
                 } ?? []
-        dataSource.onNext(bills)
+        dataSource.onNext(spends)
     }
 }

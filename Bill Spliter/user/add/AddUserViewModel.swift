@@ -33,9 +33,9 @@ class AddUserViewModelViewModel {
 
     lazy var isSubmitEnabled: Observable<Bool> = {
         return self.selectedUsers.asObservable()
-                                .map { users -> Bool in
-                                    return true && !users.isEmpty
-                                }
+                .map { users -> Bool in
+                    return true && !users.isEmpty
+                }
     }()
 
     lazy var usersObservable: Observable<[User]> = {
@@ -44,17 +44,23 @@ class AddUserViewModelViewModel {
 
     init(_ inputs: UIInputs) {
         didSubmit = inputs.submitTrigger
-                            .map { self.selectedUsers.value }
+                .map {
+            self.selectedUsers.value
+        }
 
         inputs.typingTrigger
                 .throttle(0.75, scheduler: MainScheduler.instance)
                 .subscribe(onNext: { text in
-                    self.users.flatMap { users in
-                        return Observable.just(users.filter { (user: User) -> Bool in
-                                return user.name.contains(text)
-                            })
-                    }.bind(to: self.filteredUsers)
-                    .disposed(by: self.bag)
+                    if text.count >= 2 {
+                        self.users.flatMap { users in
+                                    return Observable.just(users.filter { (user: User) -> Bool in
+                                        return user.name.contains(text)
+                                    })
+                                }.bind(to: self.filteredUsers)
+                                .disposed(by: self.bag)
+                    } else {
+                        self.filteredUsers.accept(self.users.value)
+                    }
                 })
                 .disposed(by: bag)
 
@@ -63,20 +69,23 @@ class AddUserViewModelViewModel {
         }.disposed(by: bag)
 
         inputs.deSelectUser.subscribe { user in
-            self.selectedUsers.accept(self.selectedUsers.value.filter {$0.id != user.element.unsafelyUnwrapped.id})
+            self.selectedUsers.accept(self.selectedUsers.value.filter {
+                $0.id != user.element.unsafelyUnwrapped.id
+            })
         }.disposed(by: bag)
     }
 
     public func fetchData() {
-        let friend = User(id: "someID", imageURL: "https://ui-avatars.com/api/?name=Weronika+Relich&size=75&color=FFFFF&background=007AFF", name: "Weronika Relich")
-        let friend2 = User(id: "someI2", imageURL: "https://ui-avatars.com/api/?name=Pawel+Wichary&size=75&color=FFFFF&background=007AFF", name: "Pawel Wichary")
-        let friend3 = User(id: "someI3", imageURL: "https://ui-avatars.com/api/?name=Pawel+Wichary&size=75&color=FFFFF&background=007AFF", name: "Pawel Wichary")
-        users.acceptAppending(friend)
-        users.acceptAppending(friend2)
-        users.acceptAppending(friend3)
+        UserService.getUsers { users in
+            print("Fetched users [\(users)]")
+            self.users.accept(users)
+            self.filteredUsers.accept(users)
+        }
     }
 
     public func isSelected(user: User) -> Bool {
-        return selectedUsers.value.contains { $0.id == user.id}
+        return selectedUsers.value.contains {
+            $0.id == user.id
+        }
     }
 }

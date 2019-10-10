@@ -7,30 +7,10 @@
 //
 
 import Foundation
-class User : Decodable, Encodable {
-    private let _id: String
-    private let image: String
-    private let _name: String
-    private let friendsIds: [String] = [String]()
-    
-    init(id: String, imageURL: String, name: String) {
-        self.image = imageURL
-        self._name = name
-        _id = id
-
-    }
+struct User : Decodable, Encodable {
+    let id: String
+    let name: String
+    let imageURL: String
+    let groups: [String]
+    let friends: [String]
 }
-extension User {
-    var id: String {
-        return _id
-    }
-
-    var imageURL: URL? {
-        return URL(string: image)
-    }
-    
-    var name: String {
-        return _name
-    }
-}
-

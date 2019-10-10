@@ -1,5 +1,5 @@
 //
-//  Bill .swift
+//  Spend.swift
 //  Bill Spliter
 //
 //  Created by Piotr Kupczyk on 14/02/2019.
