@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: MainTabBarController())
         navVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appFont(ofSize: 17, weight: .regular)]
         window?.rootViewController = navVC
-        
+        DropDown.startListeningToKeyboard()
         return true
     }
 

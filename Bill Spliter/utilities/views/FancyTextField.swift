@@ -99,10 +99,11 @@ class FancyTextField: UIView {
         textField.resignFirstResponder()
     }
 
-    init(placeholder: String) {
+    init(placeholder: String, type: UIKeyboardType = .default) {
         super.init(frame: .zero)
         setupLayouts()
         placeholderLabel.text = placeholder
+        self.textField.keyboardType = type
     }
 
     required init?(coder aDecoder: NSCoder) {

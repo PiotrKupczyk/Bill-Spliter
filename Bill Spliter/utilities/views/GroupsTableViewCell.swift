@@ -18,7 +18,6 @@ class GroupsTableViewCell: UITableViewCell {
                 iconImageView.image = UIImage(named: "home-icon")
             }
             titleLabel.text = groupModel.name
-            balanceLabel.text = "0zł"
             setupLayouts()
             setupViews()
         }

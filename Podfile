@@ -14,6 +14,7 @@ target 'Bill Spliter' do
   pod 'Alamofire', '~> 4.7.0'
   pod 'Alamofire-SwiftyJSON'
   pod "RxGesture"
+  pod "DropDown"
 
   target 'Bill SpliterTests' do
     inherit! :search_paths

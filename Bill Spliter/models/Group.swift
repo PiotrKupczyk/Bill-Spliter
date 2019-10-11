@@ -12,7 +12,7 @@ struct Group: Codable {
     let id: String
     let name: String
     let imageURL: String?
-    let members: [Member]?
+    let members: [Member]
 }
 
 struct Member: Codable {

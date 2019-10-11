@@ -17,17 +17,21 @@
 		833679032210529400331E5D /* Bill_SpliterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833679022210529400331E5D /* Bill_SpliterTests.swift */; };
 		83AE1F2D2215C338003A4D60 /* Spend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AE1F2C2215C338003A4D60 /* Spend.swift */; };
 		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
+		B6E0E1E7F1172B9E455744BC /* GroupSpendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED82F2C47F31939903AC /* GroupSpendsViewModel.swift */; };
+		B6E0E3138E2B89142BB24A80 /* GroupBillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8933DBC60C084C2F218 /* GroupBillsViewController.swift */; };
 		B6E0E314FFEFC29C67E74A4B /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED33CA2D5669CB186199 /* GroupViewModel.swift */; };
 		B6E0E3B21E90B06BB7131D02 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */; };
 		B6E0E3E9F3A979BE09B43431 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E6E55D6AAB5C4108728B /* GroupsTableViewController.swift */; };
+		B6E0E3F877F3D7082BA8CC83 /* GroupBillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E635093AD580B00C2111 /* GroupBillsCollectionViewCell.swift */; };
 		B6E0E448471ABCB9B81DF3CD /* AddUserSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EAF948213579CCA24F83 /* AddUserSearchBarView.swift */; };
 		B6E0E46BD145B07C36957E52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E973F6E9641F1B2CDCAC /* User.swift */; };
 		B6E0E4D7A9A97281B8E1BFB1 /* KeyboardFriendlyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7953F217D227FA04EC3 /* KeyboardFriendlyVC.swift */; };
 		B6E0E520048E4FC82CB7D3FF /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EFBA40C83D1B470AC04B /* GroupsTableViewCell.swift */; };
 		B6E0E56A7E57360002C6550E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E6C775D12B9A594C8520 /* AddGroupViewController.swift */; };
+		B6E0E67E5FC812207E9539B8 /* AddSpendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */; };
 		B6E0E6A49D2303F39C20FD88 /* InitialsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EEC5ECED943B54E8F41D /* InitialsImageView.swift */; };
-		B6E0E77AD19992A4A075AEDC /* GroupBillsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9556D41B423C7994B1C /* GroupBillsViewModel.swift */; };
 		B6E0E78BBCF14D171EA3DB07 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8002B5D83DBA4DCD5B0 /* GroupService.swift */; };
+		B6E0E84A0CFF28199B5696E1 /* AddSpendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E0E55C1455F3FD8B8652 /* AddSpendViewController.swift */; };
 		B6E0E8DF1E13E77EEC362043 /* AddGroupUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E2B441A1E48B003EB732 /* AddGroupUserCollectionViewCell.swift */; };
 		B6E0E989CA0B88C1EF1B2857 /* FancyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EBEA0537CB94D1D5EAF8 /* FancyTextField.swift */; };
 		B6E0E9CDCBADA7864D650DDD /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E9743D4E648DC73FFEDE /* AddGroupViewModel.swift */; };
@@ -35,11 +39,9 @@
 		B6E0EBEEA093B880B8E48DC5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EAAB2026CA3AEF1D3874 /* UserService.swift */; };
 		B6E0EC2DC13A67FC9783C833 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EB8156B37520FCF99D73 /* AddUserViewModel.swift */; };
 		B6E0ECB677BBC375D6FCC0D2 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED26F4AADDD8A44854F4 /* AddUserViewController.swift */; };
-		B6E0ECD9E5F7C1D944874973 /* GroupBillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EAB384DCE0CC0F0AD3BD /* GroupBillsCollectionViewCell.swift */; };
 		B6E0ED86A780CD7E93ACC05E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E2F01F816609F0BE66DB /* MainTabBarController.swift */; };
 		B6E0EE768A693649D5BD86DF /* AddUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EA3A09FD68E79BE7160A /* AddUserCollectionViewCell.swift */; };
 		B6E0EEE74E8FA30CC5740250 /* BehaviorRelay.swift in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */; };
-		B6E0EF9FAB519EF602984660 /* GroupBillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EA49A5240A413787A9A5 /* GroupBillsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,27 +72,29 @@
 		89C150379F95C50A0CD17523 /* Pods_Bill_SpliterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_SpliterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E0E0E55C1455F3FD8B8652 /* AddSpendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewController.swift; sourceTree = "<group>"; };
 		B6E0E2B441A1E48B003EB732 /* AddGroupUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E2F01F816609F0BE66DB /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewModel.swift; sourceTree = "<group>"; };
 		B6E0E3BE9EC832691ECAD98D /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.swift; sourceTree = "<group>"; };
+		B6E0E635093AD580B00C2111 /* GroupBillsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E6C775D12B9A594C8520 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		B6E0E6E55D6AAB5C4108728B /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		B6E0E7953F217D227FA04EC3 /* KeyboardFriendlyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFriendlyVC.swift; sourceTree = "<group>"; };
 		B6E0E8002B5D83DBA4DCD5B0 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
 		B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		B6E0E9556D41B423C7994B1C /* GroupBillsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewModel.swift; sourceTree = "<group>"; };
+		B6E0E8933DBC60C084C2F218 /* GroupBillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewController.swift; sourceTree = "<group>"; };
 		B6E0E973F6E9641F1B2CDCAC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B6E0E9743D4E648DC73FFEDE /* AddGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
 		B6E0EA3A09FD68E79BE7160A /* AddUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserCollectionViewCell.swift; sourceTree = "<group>"; };
-		B6E0EA49A5240A413787A9A5 /* GroupBillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsViewController.swift; sourceTree = "<group>"; };
 		B6E0EAAB2026CA3AEF1D3874 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		B6E0EAB384DCE0CC0F0AD3BD /* GroupBillsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0EAF948213579CCA24F83 /* AddUserSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserSearchBarView.swift; sourceTree = "<group>"; };
 		B6E0EB8156B37520FCF99D73 /* AddUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 		B6E0EBEA0537CB94D1D5EAF8 /* FancyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextField.swift; sourceTree = "<group>"; };
 		B6E0ED26F4AADDD8A44854F4 /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		B6E0ED33CA2D5669CB186199 /* GroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		B6E0ED82F2C47F31939903AC /* GroupSpendsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSpendsViewModel.swift; sourceTree = "<group>"; };
 		B6E0EEC5ECED943B54E8F41D /* InitialsImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialsImageView.swift; sourceTree = "<group>"; };
 		B6E0EFBA40C83D1B470AC04B /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +220,16 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		B6E0E0FEC6228BEDAE5DF38F /* list */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0E635093AD580B00C2111 /* GroupBillsCollectionViewCell.swift */,
+				B6E0E8933DBC60C084C2F218 /* GroupBillsViewController.swift */,
+				B6E0ED82F2C47F31939903AC /* GroupSpendsViewModel.swift */,
+			);
+			path = list;
+			sourceTree = "<group>";
+		};
 		B6E0E397688DC4053D298748 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,9 +262,8 @@
 		B6E0E6E367A3437D536A3E84 /* spend */ = {
 			isa = PBXGroup;
 			children = (
-				B6E0EAB384DCE0CC0F0AD3BD /* GroupBillsCollectionViewCell.swift */,
-				B6E0E9556D41B423C7994B1C /* GroupBillsViewModel.swift */,
-				B6E0EA49A5240A413787A9A5 /* GroupBillsViewController.swift */,
+				B6E0E0FEC6228BEDAE5DF38F /* list */,
+				B6E0EDCAE9F069404AF60AB5 /* add */,
 			);
 			path = spend;
 			sourceTree = "<group>";
@@ -270,6 +283,15 @@
 				B6E0E8002B5D83DBA4DCD5B0 /* GroupService.swift */,
 			);
 			path = service;
+			sourceTree = "<group>";
+		};
+		B6E0EDCAE9F069404AF60AB5 /* add */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */,
+				B6E0E0E55C1455F3FD8B8652 /* AddSpendViewController.swift */,
+			);
+			path = add;
 			sourceTree = "<group>";
 		};
 		B6E0EEAA6352BA4865E7DA0E /* views */ = {
@@ -433,6 +455,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
@@ -445,6 +468,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
@@ -520,13 +544,15 @@
 				B6E0EE768A693649D5BD86DF /* AddUserCollectionViewCell.swift in Sources */,
 				B6E0EC2DC13A67FC9783C833 /* AddUserViewModel.swift in Sources */,
 				B6E0E4D7A9A97281B8E1BFB1 /* KeyboardFriendlyVC.swift in Sources */,
-				B6E0ECD9E5F7C1D944874973 /* GroupBillsCollectionViewCell.swift in Sources */,
-				B6E0E77AD19992A4A075AEDC /* GroupBillsViewModel.swift in Sources */,
-				B6E0EF9FAB519EF602984660 /* GroupBillsViewController.swift in Sources */,
 				B6E0ED86A780CD7E93ACC05E /* MainTabBarController.swift in Sources */,
 				B6E0EBEEA093B880B8E48DC5 /* UserService.swift in Sources */,
 				B6E0E78BBCF14D171EA3DB07 /* GroupService.swift in Sources */,
 				B6E0E46BD145B07C36957E52 /* User.swift in Sources */,
+				B6E0E3F877F3D7082BA8CC83 /* GroupBillsCollectionViewCell.swift in Sources */,
+				B6E0E3138E2B89142BB24A80 /* GroupBillsViewController.swift in Sources */,
+				B6E0E1E7F1172B9E455744BC /* GroupSpendsViewModel.swift in Sources */,
+				B6E0E67E5FC812207E9539B8 /* AddSpendViewModel.swift in Sources */,
+				B6E0E84A0CFF28199B5696E1 /* AddSpendViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

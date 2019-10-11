@@ -21,11 +21,40 @@ struct GroupService {
                 }
     }
 
+    static func addSpend(
+            groupId: String,
+            title: String,
+            value: Double,
+            payerId: String,
+            concerns: [String],
+            completion: @escaping (Spend?) -> Void
+    ) {
+        let parameters: [String: Any] = [
+            "title": title,
+            "value": value,
+            "payerId": payerId,
+            "concerns": concerns
+        ]
+        Alamofire.request(
+                "\(Const.API_PATH)/group/\(groupId)/spend",
+                method: .put,
+                parameters: parameters,
+                encoding: JSONEncoding.default
+        ).responseSwiftyJSON { response in
+            guard let json = response.value else {
+                print("Can't get json from response: \(response)")
+                return
+            }
+            completion(json.decodeTo(Spend.self))
+        }
+
+    }
+
     static func createGroup(name: String, usersIds: [String], completion: @escaping (Group?) -> Void) {
         let parameters: [String: Any] = [
             "name": name,
             "imageURL": Const.DEFAULT_IMAGE_URL,
-            "membersIds": [Const.USER_ID] + usersIds
+            "membersIds": usersIds
         ]
         Alamofire.request(
                 "\(Const.API_PATH)/group",

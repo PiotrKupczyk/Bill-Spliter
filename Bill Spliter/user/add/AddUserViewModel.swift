@@ -14,6 +14,8 @@ import RxCocoa
 class AddUserViewModelViewModel {
     let bag = DisposeBag()
 
+    private let initialUsersIds: [String]!
+
     private let users = BehaviorRelay<[User]>(value: [])
 
     private let filteredUsers = BehaviorRelay<[User]>(value: [])
@@ -42,7 +44,8 @@ class AddUserViewModelViewModel {
         return self.filteredUsers.asObservable()
     }()
 
-    init(_ inputs: UIInputs) {
+    init(_ inputs: UIInputs, usersIds: [String] = []) {
+        self.initialUsersIds = usersIds
         didSubmit = inputs.submitTrigger
                 .map {
             self.selectedUsers.value
@@ -76,11 +79,22 @@ class AddUserViewModelViewModel {
     }
 
     public func fetchData() {
-        UserService.getUsers { users in
-            print("Fetched users [\(users)]")
-            self.users.accept(users)
-            self.filteredUsers.accept(users)
+        if initialUsersIds.isEmpty {
+            UserService.getUsers { users in
+                print("Fetched users [\(users)]")
+                self.users.accept(users)
+                self.filteredUsers.accept(users)
+            }
+        } else {
+            initialUsersIds.forEach {
+                UserService.getUserById(userId: $0) { _user in
+                    guard let user = _user else { return }
+                    self.users.acceptAppending(user)
+                    print("Fetched user [\(user)]")
+                }
+            }
         }
+
     }
 
     public func isSelected(user: User) -> Bool {
