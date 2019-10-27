@@ -48,7 +48,9 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
                     .disposed(by: groupViewModel.bag)
             groupViewModel.didGroupCreated
                     .subscribe(onNext: { group in
-                        guard let safeGroup = group else { return }
+                        guard let safeGroup = group else {
+                            return
+                        }
                         self.viewModel.appendGroup(group: safeGroup)
                     }).disposed(by: groupViewModel.bag)
             return groupViewModel
@@ -64,10 +66,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 
     private func addPlusButton() {
         tableView.addSubview(plusButton)
-        plusButton.superview?.bringSubviewToFront(plusButton)
         //TODO fix button position
-        plusButton.frame = CGRect(origin: CGPoint(x: 161, y: 591), size: CGSize(width: 54, height: 54))
-        plusButton.setImage(UIImage(named: "plusButton"), for: .normal)
     }
 
     private func bindTableView() {
@@ -76,23 +75,20 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             cell.groupModel = group
         }.disposed(by: disposeBag)
 
-        tableView.rx.itemSelected.subscribe(onNext: {
-            (indexPath) in
-                let group = self.viewModel.dataSource.value[indexPath.row]
-                let vc = GroupBillsViewController(group: group)
-                vc.title = "\(group.name) bills"
-                self.navigationController?.pushViewController(vc, animated: true)
+        tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
+            let group = self.viewModel.dataSource.value[indexPath.row]
+            let vc = GroupBillsViewController(group: group)
+            vc.title = "\(group.name) bills"
+            self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
     }
 
     private func setupView() {
-        plusButton.setImage(UIImage(named: "plus-icon"), for: .normal)
         view.backgroundColor = .white
         self.tableView.separatorColor = .clear
         tableView.backgroundColor = .white
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        plusButton.rx
-                .tap
+        plusButton.rx.tap
                 .subscribe(onNext: {
                     self.prepareNavigationToAddGroup()
                 })
@@ -116,4 +112,5 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
 //            maker.bottom.equalTo(view.snp.bottomMargin)
         }
     }
+
 }

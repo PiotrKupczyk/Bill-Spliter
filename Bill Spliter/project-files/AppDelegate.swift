@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let navVC = UINavigationController(rootViewController: MainTabBarController())
-        navVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appFont(ofSize: 17, weight: .regular)]
-        window?.rootViewController = navVC
+        window?.rootViewController = LoginViewController()
         DropDown.startListeningToKeyboard()
         return true
     }

@@ -12,7 +12,7 @@ struct GroupService {
     private let CURRENT_USER_ID = ""
 
     static func getGroups(completion: @escaping ([Group]) -> Void) {
-        Alamofire.request("\(Const.API_PATH)/group")
+        Alamofire.request("\(Const.API_PATH)/group", headers: AuthenticationService.authHeader())
                 .responseSwiftyJSON { response in
                     guard let json = response.value else {
                         return
@@ -39,7 +39,8 @@ struct GroupService {
                 "\(Const.API_PATH)/group/\(groupId)/spend",
                 method: .put,
                 parameters: parameters,
-                encoding: JSONEncoding.default
+                encoding: JSONEncoding.default,
+                headers: AuthenticationService.authHeader()
         ).responseSwiftyJSON { response in
             guard let json = response.value else {
                 print("Can't get json from response: \(response)")
@@ -60,7 +61,8 @@ struct GroupService {
                 "\(Const.API_PATH)/group",
                 method: .post,
                 parameters: parameters,
-                encoding: JSONEncoding.default
+                encoding: JSONEncoding.default,
+                headers: AuthenticationService.authHeader()
         ).responseSwiftyJSON { response in
             guard let json = response.value else {
                 print("Can't get json from response: \(response)")

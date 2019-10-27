@@ -8,21 +8,18 @@ import Alamofire
 import Alamofire_SwiftyJSON
 
 struct UserService {
-    static func getUserFriends(userId: String, completion: @escaping ([User]) -> Void) {
-        Alamofire.request(
-                        "\(Const.API_PATH)/user",
-                        parameters: ["userId": userId]
-                )
-                .responseSwiftyJSON { response in
-                    guard let json = response.value else {
-                        return
-                    }
-                    completion(json.decodeTo([User].self) ?? [])
-                }
-    }
+//    static func getUserFriends(userId: String, completion: @escaping ([User]) -> Void) {
+//        Alamofire.request(headers: AuthenticationService.authHeader())
+//                .responseSwiftyJSON { response in
+//                    guard let json = response.value else {
+//                        return
+//                    }
+//                    completion(json.decodeTo([User].self) ?? [])
+//                }
+//    }
 
     static func getUsers(completion: @escaping ([User]) -> Void) {
-        Alamofire.request("\(Const.API_PATH)/user")
+        Alamofire.request("\(Const.API_PATH)/user", headers: AuthenticationService.authHeader())
                 .responseSwiftyJSON { response in
                     guard let json = response.value else {
                         print("Error during fetching users")
@@ -33,7 +30,7 @@ struct UserService {
     }
 
     static func getUserById(userId: String, completion: @escaping (User?) -> Void) {
-        Alamofire.request("\(Const.API_PATH)/user/\(userId)")
+        Alamofire.request("\(Const.API_PATH)/user/\(userId)", headers: AuthenticationService.authHeader())
                 .responseSwiftyJSON { response in
                     guard let json = response.value else {
                         print("Error during fetching users")
@@ -44,7 +41,7 @@ struct UserService {
     }
 
     static func createUser(userName: String, completion: @escaping (User?) -> Void) {
-        Alamofire.request("\(Const.API_PATH)/user", method: .post)
+        Alamofire.request("\(Const.API_PATH)/user", method: .post, headers: AuthenticationService.authHeader())
                 .responseSwiftyJSON { response in
                     guard let json = response.value else {
                         return
