@@ -6,6 +6,7 @@
 import Foundation
 import Alamofire
 import Alamofire_SwiftyJSON
+import RxSwift
 
 struct GroupService {
     private let DEFAULT_GROUP_IMAGE_URL = "https://www.countryflags.io/es/flat/64.png"

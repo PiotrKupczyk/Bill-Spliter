@@ -14,4 +14,5 @@ struct Spend: Decodable, Encodable {
     let date: Int64
     let value: Double
     let userName: String
+    let concerns: [String]
 }

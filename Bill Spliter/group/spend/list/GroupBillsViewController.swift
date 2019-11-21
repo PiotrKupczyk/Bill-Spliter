@@ -17,12 +17,26 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
     let disposeBag = DisposeBag()
     let group: Group
 
+    let summaryButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "plus-icon"), for: .normal)
+        return btn
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupLayouts()
         bindCollectionView()
         viewModel.fetchData()
+    }
+
+    func navigateToSummary() {
+        let vc = SummaryViewController()
+        vc.members = group.members
+        let summaryViewModel = SummaryViewModel(users: viewModel.users.value)
+        vc.viewModel = summaryViewModel
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     init(group: Group) {
@@ -37,8 +51,11 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
 
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    let plusButton = UIButton()
-
+    let plusButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "plus-button"), for: .normal)
+        return btn
+    }()
     private func prepareNavigationToAddSpend() {
         let addSpendVC = AddSpendViewController()
         addSpendVC.viewModelFactory = { inputs in
@@ -85,6 +102,17 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
             maker.leading.equalTo(view.snp.leading)
             maker.bottom.equalTo(plusButton.snp.top).inset(-8)
         }
+        view.addSubview(summaryButton)
+        summaryButton.snp.makeConstraints { maker in
+            maker.height.equalTo(64)
+            maker.width.equalTo(64)
+            maker.leading.equalToSuperview()
+            maker.bottom.equalTo(view.snp.bottomMargin).inset(8)
+        }
+        summaryButton.rx.tap.subscribe(onNext: {
+                    self.navigateToSummary()
+                })
+                .disposed(by: disposeBag)
     }
 
     private func bindCollectionView() {

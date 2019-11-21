@@ -8,6 +8,7 @@
 
 import UIKit
 import DropDown
+import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = LoginViewController()
+        if isUserLogged() {
+            let navVc = UINavigationController(rootViewController: MainTabBarController())
+            navVc.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appFont(ofSize: 17, weight: .regular)]
+            window?.rootViewController = navVc
+        } else {
+            window?.rootViewController = LoginViewController()
+        }
         DropDown.startListeningToKeyboard()
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+        NetworkActivityIndicatorManager.shared.completionDelay = 2.0
         return true
+    }
+
+    private func isUserLogged() -> Bool {
+        return UserDefaults.standard.string(forKey: Const.TOKEN_KEY) != nil && false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

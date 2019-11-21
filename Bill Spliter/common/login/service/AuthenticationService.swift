@@ -24,7 +24,7 @@ class AuthenticationService {
         ]
         Alamofire.request("\(Const.API_PATH)/authenticate", parameters: params)
         .responseSwiftyJSON { response in
-            guard let json = response.value else { "Couldn't authenticate. Please check you network connection"; return }
+            guard let json = response.value else { print("Couldn't authenticate. Please check your network connection"); return }
             completion(json.decodeTo(TokenResponse.self))
         }
 

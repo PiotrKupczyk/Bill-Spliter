@@ -21,6 +21,8 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
     private let reuseIdentifier = "GroupsCell"
     let viewModel = GroupViewModel()
     let disposeBag = DisposeBag()
+    var refreshHandler: RefreshHandler!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,14 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
         setupView()
         setupLayouts()
         bindTableView()
-
         viewModel.fetchData()
     }
 
-    let plusButton = UIButton()
+    let plusButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "plus-icon"), for: .normal)
+        return btn
+    }()
     let tableView = UITableView()
 
     private func prepareNavigationToAddGroup() {
@@ -42,7 +47,6 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             let groupViewModel = AddGroupViewModel(inputs: inputs)
             groupViewModel.didSubmit
                     .subscribe(onNext: {
-                        print("Submitted group creation")
                         self.navigationController?.popViewController(animated: true)
                     })
                     .disposed(by: groupViewModel.bag)
@@ -81,6 +85,18 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
             vc.title = "\(group.name) bills"
             self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
+
+        refreshHandler.refresh
+                .startWith(())
+                .subscribe(onNext: {
+                    self.viewModel.fetchData()
+                })
+                .disposed(by: disposeBag)
+        viewModel.dataSource
+                .subscribe(onNext: { _ in
+            self.refreshHandler.end()
+        })
+        .disposed(by: disposeBag)
     }
 
     private func setupView() {
@@ -93,6 +109,7 @@ class GroupsTableViewController: UIViewController, UITableViewDelegate {
                     self.prepareNavigationToAddGroup()
                 })
                 .disposed(by: disposeBag)
+        refreshHandler = RefreshHandler(view: self.tableView)
     }
 
     private func setupLayouts() {

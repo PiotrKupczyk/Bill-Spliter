@@ -10,15 +10,14 @@ import RxCocoa
 import RxGesture
 import SnapKit
 
-class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
+class AddGroupViewController : KeyboardFriendlyVC, UICollectionViewDelegateFlowLayout {
+
+    var viewModel: AddGroupViewModel!
+
     var viewModelFactory: (AddGroupViewModel.UIInputs) -> AddGroupViewModel
             = { _ in
         fatalError("Must provide factory function first.")
     }
-
-    var viewModel: AddGroupViewModel!
-    let disposeBag = DisposeBag()
-    var swipeBag = DisposeBag()
 
     private func setupViewModel() {
         let inputs = AddGroupViewModel.UIInputs(
@@ -28,6 +27,9 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         )
         viewModel = viewModelFactory(inputs)
     }
+
+    let disposeBag = DisposeBag()
+    var swipeBag = DisposeBag()
 
     private func bindTittleTextField() {
         let view = titleTextField as UIView
@@ -247,3 +249,4 @@ class AddGroupViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         self.navigationController?.pushViewController(addUserVC, animated: true)
     }
 }
+

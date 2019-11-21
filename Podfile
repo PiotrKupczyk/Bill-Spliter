@@ -11,8 +11,9 @@ target 'Bill Spliter' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'Kingfisher', '~> 4.0'
-  pod 'Alamofire', '~> 4.7.0'
+  pod 'Alamofire', '~> 4.8.0'
   pod 'Alamofire-SwiftyJSON'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.4'
   pod "RxGesture"
   pod "DropDown"
 

@@ -10,7 +10,7 @@ import RxSwift
 import RxGesture
 import RxCocoa
 
-class LoginViewController : UIViewController, UITextViewDelegate {
+class LoginViewController: UIViewController, UITextViewDelegate {
 
     private let disposeBag = DisposeBag()
     private var viewModel: LoginViewModel!
@@ -37,6 +37,7 @@ class LoginViewController : UIViewController, UITextViewDelegate {
         }).disposed(by: disposeBag)
 
     }
+
     private func prepareNavigationToGroupVC() {
         let navVC = UINavigationController(rootViewController: MainTabBarController())
         navVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appFont(ofSize: 17, weight: .regular)]
@@ -44,6 +45,7 @@ class LoginViewController : UIViewController, UITextViewDelegate {
         appDelegate.window?.rootViewController = navVC
 
     }
+
     private func bindPasswordStartedTyping() {
         let view = passwordTextField as UIView
         view.rx.tapGesture()
@@ -62,6 +64,7 @@ class LoginViewController : UIViewController, UITextViewDelegate {
                 })
                 .disposed(by: disposeBag)
     }
+
     private func bindLoginStartedTyping() {
         let view = loginTextField as UIView
         view.rx.tapGesture()
@@ -79,13 +82,27 @@ class LoginViewController : UIViewController, UITextViewDelegate {
                     self.loginTextField.hideTextField()
                 })
                 .disposed(by: disposeBag)
+        self.view.rx
+                .tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { _ in
+                    [self.loginTextField, self.passwordTextField].forEach { field in
+                        if field.isActive {
+                            field.hideTextField()
+                        }
+                    }
+                }).disposed(by: disposeBag)
     }
 
 
     // Views below
 
     private let loginTextField = FancyTextField(placeholder: "Enter Login")
-    private let passwordTextField = FancyTextField(placeholder: "Enter Password")
+    private let passwordTextField: FancyTextField = {
+        let tf = FancyTextField(placeholder: "Enter Password")
+        tf.textField.isSecureTextEntry = true
+        return tf
+    }()
     private let applicationLogoImageView = UIImageView(image: UIImage(named: "for now nothing"))
     private let loginButton: UIButton = {
         let btn = UIButton()

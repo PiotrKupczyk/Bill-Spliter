@@ -1,8 +1,10 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.2)
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
+  - AlamofireNetworkActivityIndicator (2.4.0):
+    - Alamofire (~> 4.8)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -18,8 +20,9 @@ PODS:
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7.0)
+  - Alamofire (~> 4.8.0)
   - Alamofire-SwiftyJSON
+  - AlamofireNetworkActivityIndicator (~> 2.4)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
   - DropDown
   - Kingfisher (~> 4.0)
@@ -29,8 +32,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire-SwiftyJSON
     - DropDown
     - Kingfisher
@@ -39,6 +41,9 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SwiftyJSON
+  trunk:
+    - Alamofire
+    - AlamofireNetworkActivityIndicator
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -51,8 +56,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
+  AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
@@ -62,6 +68,6 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 55e8ce01d1ee9e5135af0fcf71f0467b3a5996c8
+PODFILE CHECKSUM: 082074bb5406d9ab5cba4f98a779d801d2b2de74
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

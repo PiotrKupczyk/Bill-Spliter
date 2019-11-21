@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "255710347E2F698C4242CCD836894671"
+               BlueprintIdentifier = "47EAA417AB38A0F548DAE296435E5ED4"
                BuildableName = "Pods_Bill_SpliterTests.framework"
                BlueprintName = "Pods-Bill SpliterTests"
                ReferencedContainer = "container:Pods.xcodeproj">

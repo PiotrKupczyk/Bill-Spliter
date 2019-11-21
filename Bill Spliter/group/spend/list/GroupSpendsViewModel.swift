@@ -12,6 +12,7 @@ import RxCocoa
 
 class GroupSpendsViewModel {
     public let spends = BehaviorRelay<[Spend]>(value: [])
+    public let users = BehaviorRelay<[User]>(value: [])
     private let group: Group
 
     init(group: Group) {
@@ -24,8 +25,10 @@ class GroupSpendsViewModel {
 
     public func fetchData() {
         print("Got group [\(group.id)] members [\(group.members)]")
-        self.spends.accept(
-                self.spends.value + group.members.flatMap { $0.spends }
-        )
+        self.spends.accept(self.spends.value + group.members.flatMap { $0.spends })
+        UserService.getUsers { users in
+            self.users.accept(users)
+        }
+
     }
 }
