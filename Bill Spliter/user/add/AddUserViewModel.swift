@@ -85,7 +85,8 @@ class AddUserViewModelViewModel {
                 self.users.accept(users)
                 self.filteredUsers.accept(users)
             }
-        } else {
+        }
+        else {
             initialUsersIds.forEach {
                 UserService.getUserById(userId: $0) { _user in
                     guard let user = _user else { return }

@@ -21,6 +21,8 @@ class AddSpendViewModel {
 
     private let users = BehaviorRelay<[User]>(value: [])
 
+    let payer = BehaviorRelay<User?>(value: nil)
+
     let title = BehaviorRelay<String>(value: "")
 
     let currency = BehaviorRelay<String>(value: "")
@@ -51,10 +53,11 @@ class AddSpendViewModel {
         self.group = group
 
         didSubmit = inputs.submitTriggered.map {
+            guard let payerId = self.payer.value?.id else { return }
             self.createSpend(
                     title: self.title.value,
                     value: Double(self.currency.value) ?? 0.0,
-                    payerId: self.users.value[0].id,
+                    payerId: payerId,
                     concerns: self.users.value.map { $0.id }
             )
             print("Submit triggered")
@@ -69,6 +72,8 @@ class AddSpendViewModel {
                 .throttle(1, scheduler: MainScheduler.instance)
                 .bind(to: currency)
                 .disposed(by: bag)
+
+
     }
 
     public func updateUsers(with newUsers: [User]) {

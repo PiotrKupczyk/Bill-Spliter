@@ -17,12 +17,6 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
     let disposeBag = DisposeBag()
     let group: Group
 
-    let summaryButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "plus-icon"), for: .normal)
-        return btn
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -31,7 +25,7 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
         viewModel.fetchData()
     }
 
-    func navigateToSummary() {
+    @objc func navigateToSummary() {
         let vc = SummaryViewController()
         vc.members = group.members
         let summaryViewModel = SummaryViewModel(users: viewModel.users.value)
@@ -83,8 +77,12 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
         collectionView.backgroundColor = .white
         view.backgroundColor = .white
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        setupSummaryButton()
         setupPlusButton()
+    }
 
+    private func setupSummaryButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(self.navigateToSummary))
     }
 
     private func setupLayouts() {
@@ -102,17 +100,6 @@ class GroupBillsViewController: UIViewController, UICollectionViewDelegateFlowLa
             maker.leading.equalTo(view.snp.leading)
             maker.bottom.equalTo(plusButton.snp.top).inset(-8)
         }
-        view.addSubview(summaryButton)
-        summaryButton.snp.makeConstraints { maker in
-            maker.height.equalTo(64)
-            maker.width.equalTo(64)
-            maker.leading.equalToSuperview()
-            maker.bottom.equalTo(view.snp.bottomMargin).inset(8)
-        }
-        summaryButton.rx.tap.subscribe(onNext: {
-                    self.navigateToSummary()
-                })
-                .disposed(by: disposeBag)
     }
 
     private func bindCollectionView() {

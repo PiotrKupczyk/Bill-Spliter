@@ -15,7 +15,7 @@ class FancyTextField: UIView {
     public private(set) var isActive = false
     private let placeholderLabel: UILabel = {
         let l = UILabel()
-        l.font = UIFont.appFont(ofSize: 17, weight: .regular)
+        l.font = UIFont.appFont(ofSize: 13, weight: .regular)
         l.textColor = UIColor.textLightGray
         return l
     }()
@@ -28,7 +28,7 @@ class FancyTextField: UIView {
 
     let textField: UITextField = {
         let tf = UITextField()
-        tf.font = UIFont.appFont(ofSize: 17, weight: .demiBold)
+        tf.font = UIFont.appFont(ofSize: 13, weight: .demiBold)
         tf.textColor = UIColor.coolBlue
         return tf
     }()
@@ -45,7 +45,7 @@ class FancyTextField: UIView {
         placeholderLabel.snp.makeConstraints { maker in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
-            bottomConstraint = maker.bottom.equalTo(underlineView.snp.bottom).constraint
+            bottomConstraint = maker.bottom.equalTo(underlineView.snp.top).constraint
             maker.top.equalToSuperview()
         }
         bottomConstraint?.activate()
@@ -59,12 +59,10 @@ class FancyTextField: UIView {
             maker.trailing.equalToSuperview()
             maker.bottom.equalTo(self.underlineView.snp.top)
         }
-//        let currentFrame = placeholderLabel.frame
-//        let newFrame = CGRect(origin: CGPoint(x: currentFrame.origin.x, y: currentFrame.origin.y-18), size: <#T##CGSize##CoreGraphics.CGSize#>)
         self.bottomConstraint?.deactivate()
         self.setNeedsUpdateConstraints()
 
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
             self.placeholderLabel.textColor = UIColor.coolBlue
             self.underlineView.backgroundColor = UIColor.coolBlue
             self.placeholderLabel.font = UIFont.appFont(ofSize: 13, weight: .regular)
@@ -73,7 +71,6 @@ class FancyTextField: UIView {
         self.isActive = !self.isActive
         textField.becomeFirstResponder()
     }
-    //TODO: add animations to font
     public func hideTextField() {
         if ((self.textField.text?.isEmpty)!) {
             self.isActive = !self.isActive
@@ -81,14 +78,14 @@ class FancyTextField: UIView {
             textField.removeFromSuperview()
             self.setNeedsUpdateConstraints()
 
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
                 self.placeholderLabel.textColor = UIColor.textLightGray
                 self.underlineView.backgroundColor = UIColor.textLightGray
                 self.placeholderLabel.transform = self.placeholderLabel.transform.inverted()
                 self.layoutIfNeeded()
             }, completion: {
                 _ in
-                self.placeholderLabel.font = UIFont.appFont(ofSize: 17, weight: .regular)
+                self.placeholderLabel.font = UIFont.appFont(ofSize: 13, weight: .regular)
             })
 
         } else {

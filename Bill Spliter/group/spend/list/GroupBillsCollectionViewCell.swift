@@ -34,7 +34,7 @@ class GroupBillsCollectionViewCell: UICollectionViewCell {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.appFont(ofSize: 18, weight: .demiBold)
+        label.font = UIFont.appFont(ofSize: 20, weight: .demiBold)
         label.backgroundColor = .white
         return label
     }()
@@ -56,7 +56,7 @@ class GroupBillsCollectionViewCell: UICollectionViewCell {
 
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.appFont(ofSize: 22, weight: .bold)
+        label.font = UIFont.appFont(ofSize: 16, weight: .bold)
         label.backgroundColor = .white
         label.textAlignment = .right
         return label

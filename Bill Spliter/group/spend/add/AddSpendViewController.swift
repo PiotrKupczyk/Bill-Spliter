@@ -20,6 +20,7 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     var viewModel: AddSpendViewModel!
     let disposeBag = DisposeBag()
     var swipeBag = DisposeBag()
+    private let users = BehaviorRelay<[User]>(value: [])
 
     private func setupViewModel() {
         let inputs = AddSpendViewModel.UIInputs(
@@ -89,14 +90,14 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
                 .bind(to: collectionView.rx.items(cellIdentifier: identifier)) {
                     (_, member: User, cell: AddGroupUserCollectionViewCell) in
                     cell.userModel = member
-                    cell.rx
-                            .swipeGesture(.left)
-                            .when(.ended)
-                            .subscribe(onNext: { recognizer in
-                                let cell = recognizer.view as! AddGroupUserCollectionViewCell
-                                self.viewModel?.removeUser(user: cell.userModel)
-                            })
-                            .disposed(by: self.swipeBag)
+//                    cell.rx
+//                            .swipeGesture(.left)
+//                            .when(.ended)
+//                            .subscribe(onNext: { recognizer in
+//                                let cell = recognizer.view as! AddGroupUserCollectionViewCell
+//                                self.viewModel?.removeUser(user: cell.userModel)
+//                            })
+//                            .disposed(by: self.swipeBag)
                 }.disposed(by: self.disposeBag)
     }
 
@@ -112,6 +113,15 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
+        self.viewModel.group.members.forEach {
+            UserService.getUserById(userId: $0.userId) { _user in
+                guard let user = _user else {
+                    return
+                }
+                self.users.acceptAppending(user)
+                print("Fetched user [\(user)]")
+            }
+        }
         setupViews()
         setupLayouts()
         bindTittleTextField()
@@ -125,13 +135,20 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
     private let identifier = "cellId"
     let titleTextField = FancyTextField(placeholder: "Title")
     let valueTextField = FancyTextField(placeholder: "Value", type: .numberPad)
-    let dropDownContainer = UIView()
-    let payerDropDown = DropDown()
+    let dropDownContainer = PayerView()
     let concernsLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont.appFont(ofSize: 13, weight: .regular)
         l.textColor = UIColor.textLightGray
         l.text = "Concerns"
+        return l
+    }()
+
+    let payerLabel: UILabel = {
+        let l = UILabel()
+        l.font = UIFont.appFont(ofSize: 13, weight: .regular)
+        l.textColor = UIColor.textLightGray
+        l.text = "Payer"
         return l
     }()
 
@@ -169,21 +186,14 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
         dropDownContainer.rx.tapGesture()
                 .when(.recognized)
                 .subscribe(onNext: { gesture in
-                    self.payerDropDown.show()
+                    self.dropDownContainer.show()
                 })
                 .disposed(by: disposeBag)
-        payerDropDown.anchorView = dropDownContainer
-        viewModel.group.members
-                        .map { $0.userId }
-                        .forEach { UserService.getUserById(userId: $0) { _user in
-                            guard let user = _user else { return }
-                            self.payerDropDown.dataSource.append(user.name)
-                            print("Fetched user [\(user)]")
-                        } }
-        payerDropDown.dismissMode = .onTap
-        payerDropDown.direction = .bottom
-//        payerDropDown.topOffset = CGPoint(x: 0, y:-(payerDropDown.anchorView?.plainView.bounds.height)!)
-//        dropDownContainer.backgroundColor = .black
+        users.bind(to: dropDownContainer.users)
+                .disposed(by: disposeBag)
+        dropDownContainer.selectedUser
+                .bind(to: viewModel.payer)
+                .disposed(by: disposeBag)
     }
 
     private func setupViews() {
@@ -212,13 +222,18 @@ class AddSpendViewController: KeyboardFriendlyVC, UICollectionViewDelegateFlowLa
             maker.trailingMargin.equalToSuperview().offset(-16)
             maker.height.equalTo(48)
         }
-        contentView.addSubview(dropDownContainer)
-        contentView.addSubview(payerDropDown)
-        dropDownContainer.snp.makeConstraints { maker in
+        contentView.addSubview(payerLabel)
+        payerLabel.snp.makeConstraints { maker in
             maker.leadingMargin.equalToSuperview().offset(16)
             maker.trailingMargin.equalToSuperview().offset(-16)
             maker.top.equalTo(valueTextField.snp.bottom).inset(-16)
-            maker.height.equalTo(48)
+        }
+        contentView.addSubview(dropDownContainer)
+        dropDownContainer.snp.makeConstraints { maker in
+            maker.leadingMargin.equalToSuperview().offset(16)
+            maker.trailingMargin.equalToSuperview().offset(-16)
+            maker.top.equalTo(payerLabel.snp.bottom).offset(8)
+            maker.height.equalTo(40)
         }
         contentView.addSubview(concernsLabel)
         concernsLabel.snp.makeConstraints { maker in

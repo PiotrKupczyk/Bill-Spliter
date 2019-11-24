@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,11 @@
 		83DC413D2211CA2600B6BDF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC413C2211CA2600B6BDF1 /* UIColor.swift */; };
 		B6E0E0231A03C1D4720C7145 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED283D8764BE1D40E9AA /* LoginViewController.swift */; };
 		B6E0E06512C2A2CC05D37F10 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E666D2A1DC1C290B7AF8 /* SummaryViewModel.swift */; };
+		B6E0E1C9A06D9ED18CAA55CE /* PayerDropDownCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E7263B34A60CB3A29C9A /* PayerDropDownCellNib.xib */; };
 		B6E0E1D163F3E470D257D0F9 /* RefreshHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EDE6C46F230AFAEAB72E /* RefreshHandler.swift */; };
+		B6E0E1D8CA0399D230A18065 /* PayerDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E2106C949FB0DAF46E09 /* PayerDropDownCell.swift */; };
 		B6E0E1E7F1172B9E455744BC /* GroupSpendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED82F2C47F31939903AC /* GroupSpendsViewModel.swift */; };
+		B6E0E28CCDBE4F70FE83B11D /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EEACB20C1E0CE2B71BF1 /* Bundle.swift */; };
 		B6E0E3138E2B89142BB24A80 /* GroupBillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E8933DBC60C084C2F218 /* GroupBillsViewController.swift */; };
 		B6E0E314FFEFC29C67E74A4B /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ED33CA2D5669CB186199 /* GroupViewModel.swift */; };
 		B6E0E3B21E90B06BB7131D02 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */; };
@@ -32,6 +35,7 @@
 		B6E0E520048E4FC82CB7D3FF /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EFBA40C83D1B470AC04B /* GroupsTableViewCell.swift */; };
 		B6E0E55C351A3B9962045B7F /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E92DB1B9BFE1658B2D7F /* SpinnerViewController.swift */; };
 		B6E0E56A7E57360002C6550E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E6C775D12B9A594C8520 /* AddGroupViewController.swift */; };
+		B6E0E5E14F91C57A2126761F /* PayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E64F87A97527062159B3 /* PayerView.swift */; };
 		B6E0E63C700FE5C9F121A849 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0ECE9B82904976628F9CD /* SummaryViewController.swift */; };
 		B6E0E67E5FC812207E9539B8 /* AddSpendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */; };
 		B6E0E6A49D2303F39C20FD88 /* InitialsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E0EEC5ECED943B54E8F41D /* InitialsImageView.swift */; };
@@ -81,17 +85,20 @@
 		9FC5BA2536ADC7F6505770A0 /* Pods-Bill Spliter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill Spliter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill Spliter/Pods-Bill Spliter.debug.xcconfig"; sourceTree = "<group>"; };
 		AFB4D7D2420ADAF31F0925F7 /* Pods_Bill_Spliter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bill_Spliter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E0E55C1455F3FD8B8652 /* AddSpendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewController.swift; sourceTree = "<group>"; };
+		B6E0E2106C949FB0DAF46E09 /* PayerDropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayerDropDownCell.swift; sourceTree = "<group>"; };
 		B6E0E2B441A1E48B003EB732 /* AddGroupUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E0E2F01F816609F0BE66DB /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewModel.swift; sourceTree = "<group>"; };
 		B6E0E3BE9EC832691ECAD98D /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.swift; sourceTree = "<group>"; };
 		B6E0E635093AD580B00C2111 /* GroupBillsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBillsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6E0E64F87A97527062159B3 /* PayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayerView.swift; sourceTree = "<group>"; };
 		B6E0E666D2A1DC1C290B7AF8 /* SummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		B6E0E683E5BDEA7F50E7C798 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		B6E0E6C775D12B9A594C8520 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		B6E0E6E55D6AAB5C4108728B /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		B6E0E6F1D66E5BEEDDE071A5 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B6E0E7263B34A60CB3A29C9A /* PayerDropDownCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayerDropDownCellNib.xib; sourceTree = "<group>"; };
 		B6E0E7953F217D227FA04EC3 /* KeyboardFriendlyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardFriendlyVC.swift; sourceTree = "<group>"; };
 		B6E0E8002B5D83DBA4DCD5B0 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
 		B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 		B6E0ED33CA2D5669CB186199 /* GroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		B6E0ED82F2C47F31939903AC /* GroupSpendsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSpendsViewModel.swift; sourceTree = "<group>"; };
 		B6E0EDE6C46F230AFAEAB72E /* RefreshHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHandler.swift; sourceTree = "<group>"; };
+		B6E0EEACB20C1E0CE2B71BF1 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		B6E0EEC5ECED943B54E8F41D /* InitialsImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialsImageView.swift; sourceTree = "<group>"; };
 		B6E0EFBA40C83D1B470AC04B /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		C939E063BB6FDFBF7BC4F8B4 /* Pods-Bill SpliterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bill SpliterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bill SpliterTests/Pods-Bill SpliterTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 				83DC413C2211CA2600B6BDF1 /* UIColor.swift */,
 				B6E0E61D91426211642E66A7 /* BehaviorRelay.swift */,
 				B6E0E852FEDD23C0E6DA5D34 /* UIButton.swift */,
+				B6E0EEACB20C1E0CE2B71BF1 /* Bundle.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -325,6 +334,16 @@
 			path = service;
 			sourceTree = "<group>";
 		};
+		B6E0ECA9C085F92C086F36A9 /* dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				B6E0E2106C949FB0DAF46E09 /* PayerDropDownCell.swift */,
+				B6E0E7263B34A60CB3A29C9A /* PayerDropDownCellNib.xib */,
+				B6E0E64F87A97527062159B3 /* PayerView.swift */,
+			);
+			path = dropdown;
+			sourceTree = "<group>";
+		};
 		B6E0ED7689730DBD6C83DCC0 /* service */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +357,7 @@
 			children = (
 				B6E0E31C1E2AA6DBB7436C61 /* AddSpendViewModel.swift */,
 				B6E0E0E55C1455F3FD8B8652 /* AddSpendViewController.swift */,
+				B6E0ECA9C085F92C086F36A9 /* dropdown */,
 			);
 			path = add;
 			sourceTree = "<group>";
@@ -480,6 +500,7 @@
 				833678F82210529300331E5D /* LaunchScreen.storyboard in Resources */,
 				833678F52210529300331E5D /* Assets.xcassets in Resources */,
 				B6E0EEE74E8FA30CC5740250 /* BehaviorRelay.swift in Resources */,
+				B6E0E1C9A06D9ED18CAA55CE /* PayerDropDownCellNib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +611,9 @@
 				B6E0EB9C89B1BA2712DC2FC2 /* SummaryTableViewCell.swift in Sources */,
 				B6E0E1D163F3E470D257D0F9 /* RefreshHandler.swift in Sources */,
 				B6E0E55C351A3B9962045B7F /* SpinnerViewController.swift in Sources */,
+				B6E0E1D8CA0399D230A18065 /* PayerDropDownCell.swift in Sources */,
+				B6E0E28CCDBE4F70FE83B11D /* Bundle.swift in Sources */,
+				B6E0E5E14F91C57A2126761F /* PayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
